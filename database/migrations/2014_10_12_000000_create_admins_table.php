@@ -1,0 +1,44 @@
+<?php
+
+use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
+
+return new class extends Migration
+{
+    /**
+     * Run the migrations.
+     */
+    public function up(): void
+    {
+        Schema::create('admins', function (Blueprint $table) {
+            $table->id();
+            $table->string('name');
+            $table->bigInteger('role_id')->nullable();
+            $table->string('avatar')->nullable()->default('users/default.png');
+            $table->string('email')->unique();
+            $table->timestamp('email_verified_at')->nullable();
+            $table->string('password');
+            $table->rememberToken();
+            $table->timestamps();
+        });
+    }
+
+    /**
+     * Reverse the migrations.
+     */
+    public function down(): void
+    {
+      Schema::dropIfExists('admins');
+        // if (Schema::hasColumn('admins', 'avatar')) {
+        //   Schema::table('admins', function ($table) {
+        //       $table->dropColumn('avatar');
+        //   });
+        // }
+        // if (Schema::hasColumn('admins', 'role_id')) {
+        //     Schema::table('admins', function ($table) {
+        //         $table->dropColumn('role_id');
+        //     });
+        // }
+    }
+};
