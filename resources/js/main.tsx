@@ -1,6 +1,6 @@
 import ReactDOM from 'react-dom/client'
 import { RouterProvider } from "react-router-dom";
-// import '../css/default.css'
+import '../css/default.css'
 import '../css/app.css'
 import router from './router'
 import MuiProvider from './components/MuiProvider';

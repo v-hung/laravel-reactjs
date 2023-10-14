@@ -9,6 +9,8 @@ use Illuminate\Support\Facades\Validator;
 
 class AuthController extends Controller {
 
+  protected $guard = 'api';
+
   public function login(Request $request)
   {
     $credentials = request(['email', 'password']);
@@ -23,9 +25,9 @@ class AuthController extends Controller {
 
     if (request('remember_me')) {
       $token->expires_at = now()->addWeeks(1);
+      $token->save();
     }
 
-    $token->save();
 
     return response()->json([
       'access_token' => $tokenResult->accessToken,
@@ -62,7 +64,7 @@ class AuthController extends Controller {
 
   public function logout(Request $request)
   {
-    if (Auth::user()) {
+    if (Auth::guard('api')->user()) {
       $request->user()->token()->revoke();
 
       return response()->json([
@@ -70,5 +72,17 @@ class AuthController extends Controller {
         'message' => 'Logged out successfully',
       ], 200);
     }
+  }
+
+  public function logged(Request $request)
+  {
+    $user = Auth::guard('api')->user();
+    if (!$user) {
+      return response()->json(['error' => 'Unauthorized'], 401);
+    }
+    
+    return response()->json([
+      'user' => $user
+    ], 200);
   }
 }

@@ -11,6 +11,9 @@ const blackMain = alpha(blackBase, 0.7);
 const whiteBase = '#fff';
 const whiteMain = alpha(whiteBase, 0.7);
 
+const grayBase = '#eaeff4';
+const grayMain = alpha(grayBase, 0.7);
+
 export const lightTheme = createTheme({
   palette: {
     mode: "light",
@@ -26,10 +29,16 @@ export const lightTheme = createTheme({
       light: alpha(whiteBase, 0.5),
       dark: alpha(whiteBase, 0.9),
       contrastText: getContrastRatio(whiteMain, '#fff') > 4.5 ? '#fff' : '#111',
+    },
+    gray: {
+      main: grayMain,
+      light: alpha(grayBase, 0.5),
+      dark: alpha(grayBase, 0.9),
+      contrastText: getContrastRatio(grayMain, '#fff') > 4.5 ? '#fff' : '#111',
     }
   },
   typography: {
-    // fontFamily: ''
+    fontFamily: ''
     // fontFamily: `${roboto.style.fontFamily}, ${nunito.style.fontFamily}`
   }
 })
@@ -48,7 +57,7 @@ const MuiProvider: React.FC<{
     <StyledEngineProvider injectFirst>
       <ThemeProvider theme={lightTheme}>
         <CssBaseline />
-        <SnackbarProvider maxSnack={3} autoHideDuration={3000} anchorOrigin={{
+        <SnackbarProvider maxSnack={3} autoHideDuration={2000} anchorOrigin={{
           vertical: 'top',
           horizontal: 'right',
         }}>
@@ -66,15 +75,18 @@ declare module "@mui/material" {
   interface ButtonPropsColorOverrides {
     black: true,
     white: true,
+    gray: true
   }
 
   interface IconButtonPropsColorOverrides {
     black: true,
     white: true,
+    gray: true
   }
 
   interface SliderPropsColorOverrides {
     black: true,
     white: true,
+    gray: true
   }
 }

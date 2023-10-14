@@ -1,4 +1,6 @@
 import { VariantType, enqueueSnackbar } from "notistack"
+import { unstable_batchedUpdates } from "react-dom";
+import useUserStore from "../stores/user";
 
 export const promiseFunction = async ({
   loading, setLoading, callback, successTitle = 'Thành công',
@@ -43,6 +45,7 @@ export const promiseFunction = async ({
 
 export const Fetch = async (url: string, options?: RequestInit) => {
   const csrf = (document.head.querySelector("[name~=csrf-token][content]") as HTMLMetaElement).content || ''
+  const accessToken = useUserStore.getState().accessToken
   
   try {
     const response = await fetch(url, {
@@ -51,6 +54,7 @@ export const Fetch = async (url: string, options?: RequestInit) => {
         'Content-Type': 'application/json',
         ...options?.headers,
         "X-CSRF-Token": csrf,
+        'Authorization': `Bearer ${accessToken}`
       }
     })
 
@@ -64,4 +68,8 @@ export const Fetch = async (url: string, options?: RequestInit) => {
     console.error('Error fetching data:', error)
     throw error
   }
+}
+
+export const getImage = (url: string) => {
+  return `/storage/${url}`
 }

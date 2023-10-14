@@ -9,13 +9,17 @@ module.exports = {
         './resources/js/**/*.{js,ts,jsx,tsx}'
     ],
 
-    // theme: {
-    //     extend: {
-    //         fontFamily: {
-    //             sans: ['Figtree', ...defaultTheme.fontFamily.sans],
-    //         },
-    //     },
-    // },
+    theme: {
+        extend: {
+            fontFamily: {
+                sans: ['Figtree', ...defaultTheme.fontFamily.sans],
+            },
+        },
+    },
+
+    corePlugins: {
+        preflight: false,
+    },
 
     plugins: [
 
