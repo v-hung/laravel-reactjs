@@ -5,6 +5,9 @@ import '../css/app.css'
 import router from './router'
 import MuiProvider from './components/MuiProvider';
 
+// import ResizeObserver from 'resize-observer-polyfill';
+// window.ResizeObserver = ResizeObserver;
+
 ReactDOM.createRoot(document.getElementById('root')!).render(
   // <React.StrictMode>
     <MuiProvider>
