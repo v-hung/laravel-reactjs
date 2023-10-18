@@ -31,30 +31,30 @@ const Question = ({question, index}: any) => {
         </div>
       </div>
       
-      <div className="px-4 py-1 bg-blue-600 rounded-b-md text-white flex items-center space-x-2">
-        <span className='font-semibold mr-2'>Đáp án của bạn:</span>
-        <p className={`inline-flex w-10 h-10 rounded-full bg-white text-gray-800 hover:bg-blue-200 cursor-pointer items-center justify-center
+      <div className="px-4 py-1.5 bg-blue-600 rounded-b-md text-white flex items-center space-x-2">
+        <span className='font-semibold mr-2 text-sm'>Đáp án của bạn:</span>
+        <p className={`inline-flex w-8 h-8 rounded-full bg-white text-gray-800 hover:bg-blue-200 cursor-pointer items-center justify-center
           ${answer == 'a' ? '!bg-orange-600 !text-white' : ''}
           `}
           onClick={() => handelSelectAnswer('a')}
         >
           <span className="font-semibold">A</span>
         </p>
-        <p className={`inline-flex w-10 h-10 rounded-full bg-white text-gray-800 hover:bg-blue-200 cursor-pointer items-center justify-center
+        <p className={`inline-flex w-8 h-8 rounded-full bg-white text-gray-800 hover:bg-blue-200 cursor-pointer items-center justify-center
           ${answer == 'b' ? '!bg-orange-600 !text-white' : ''}
           `}
           onClick={() => handelSelectAnswer('b')}
         >
           <span className="font-semibold">B</span>
         </p>
-        <p className={`inline-flex w-10 h-10 rounded-full bg-white text-gray-800 hover:bg-blue-200 cursor-pointer items-center justify-center
+        <p className={`inline-flex w-8 h-8 rounded-full bg-white text-gray-800 hover:bg-blue-200 cursor-pointer items-center justify-center
           ${answer == 'c' ? '!bg-orange-600 !text-white' : ''}
           `}
           onClick={() => handelSelectAnswer('c')}
         >
           <span className="font-semibold">C</span>
         </p>
-        <p className={`inline-flex w-10 h-10 rounded-full bg-white text-gray-800 hover:bg-blue-200 cursor-pointer items-center justify-center
+        <p className={`inline-flex w-8 h-8 rounded-full bg-white text-gray-800 hover:bg-blue-200 cursor-pointer items-center justify-center
           ${answer == 'd' ? '!bg-orange-600 !text-white' : ''}
           `}
           onClick={() => handelSelectAnswer('d')}
