@@ -6,6 +6,7 @@ import AuthProvider from "./components/auth/AuthProvider";
 import useUserStore from "./stores/user";
 
 const LoginPage = lazy(() => import("./pages/LoginPage"))
+const RegisterPage = lazy(() => import("./pages/RegisterPage"))
 const StudyPage = lazy(() => import("./pages/StudyPage"))
 const StudyDetailsPage = lazy(() => import("./pages/StudyDetailsPage"))
 const TestPage = lazy(() => import("./pages/TestPage"))
@@ -65,6 +66,12 @@ const router = createBrowserRouter([
         path: '/auth/login',
         element: <Suspense fallback={<Loading />}>
           <LoginPage />
+        </Suspense>
+      },
+      {
+        path: '/auth/register',
+        element: <Suspense fallback={<Loading />}>
+          <RegisterPage />
         </Suspense>
       }
     ]

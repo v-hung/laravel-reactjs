@@ -64,8 +64,11 @@ class AuthController extends Controller {
 
   public function logout(Request $request)
   {
-    if (Auth::guard('api')->user()) {
-      $request->user()->token()->revoke();
+    /** @var \App\Models\User $user */
+    $user = Auth::guard('api')->user();
+
+    if ($user) {
+      $user->token()->revoke();
 
       return response()->json([
         'success' => true,
@@ -77,6 +80,7 @@ class AuthController extends Controller {
   public function logged(Request $request)
   {
     $user = Auth::guard('api')->user();
+
     if (!$user) {
       return response()->json(['error' => 'Unauthorized'], 401);
     }

@@ -27,7 +27,7 @@
     'wght' 400,
     'GRAD' 0,
     'opsz' 48;
-    @apply flex justify-center items-center;
+    @apply flex justify-center items-center select-none;
   }
 
   .icon-500 {
@@ -98,7 +98,7 @@
 
 @layer components {
   .icon-svg {
-    @apply block w-5 h-5;
+    @apply block w-5 h-5 select-none;
   }
 
   .icon-svg svg,

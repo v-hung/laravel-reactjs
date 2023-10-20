@@ -19,7 +19,7 @@ type State = {
 type Actions = {
   login: (data: {email: string, password: string, remember: boolean}) => Promise<void>,
   logout: () => void,
-  logged: () => Promise<void>,
+  logged: () => Promise<any>,
 }
 
 type Dispatch = {
@@ -44,8 +44,13 @@ const useUserStore = create(persist<State & Actions & Dispatch>((set, get) => ({
     })
   },
   logout: () => {
+    const accessToken = get().accessToken
+    
     Fetch('/api/auth/logout', {
       method: 'post',
+      headers: {
+        'Authorization': `Bearer ${accessToken}`
+      }
     })
 
     set({ user: null, accessToken: null })
@@ -58,6 +63,8 @@ const useUserStore = create(persist<State & Actions & Dispatch>((set, get) => ({
     set({
       user: body?.user || null
     })
+
+    return null
   },
 
   dispatch: (action) => set((state) => action(state)),

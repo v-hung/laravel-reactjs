@@ -16,7 +16,7 @@ const StudyPage = () => {
       showSuccessTitle: false,
       callback: async () => {
         if (!isLoad) {
-          const { tests } = await Fetch('/api/tests').catch(e => [])
+          const { tests } = await Fetch('/api/tests').catch(e => ({ tests: [] }))
           dispatch({ tests, isLoad: true })
         }
         else {
