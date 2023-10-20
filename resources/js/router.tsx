@@ -1,7 +1,6 @@
 import { Navigate, createBrowserRouter } from "react-router-dom"
 import MainLayout from "./components/layouts/MainLayout";
 import ErrorPage from "./pages/ErrorPage";
-import HomePage from "./pages/HomePage";
 import { Suspense, lazy } from "react";
 import AuthProvider from "./components/auth/AuthProvider";
 import useUserStore from "./stores/user";
@@ -14,7 +13,6 @@ const TestPage = lazy(() => import("./pages/TestPage"))
 const Loading = () => (<div className="text-sm p-2 text-center">Đang tải ...</div>)
 
 const router = createBrowserRouter([
-  // router authentication
   {
     loader: async () => {
       await useUserStore.getState().logged()
@@ -23,6 +21,7 @@ const router = createBrowserRouter([
     errorElement: <ErrorPage />,
     children: [
       {
+        // router authentication
         element: <AuthProvider />,
         children: [
           {
@@ -34,7 +33,7 @@ const router = createBrowserRouter([
               },
               {
                 path: '/exam',
-                element: <HomePage />
+                element: <StudyPage />
               },
               {
                 path: '/exercise',
@@ -43,7 +42,7 @@ const router = createBrowserRouter([
                 </Suspense>
               },
               {
-                path: '/exam/:id',
+                path: '/exam/:code',
                 element: <Suspense fallback={<Loading />}>
                   <StudyDetailsPage />
                 </Suspense>
@@ -52,7 +51,7 @@ const router = createBrowserRouter([
           },
 
           {
-            path: '/test/:id',
+            path: '/test/:code',
             element: <Suspense fallback={<Loading />}>
               <TestPage />
             </Suspense>

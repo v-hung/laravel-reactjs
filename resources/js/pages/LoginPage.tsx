@@ -69,7 +69,7 @@ const LoginPage = () => {
           </div>
 
           <div className="flex space-x-2 items-center">
-            <input type="checkbox" name='remember' id='remember' value="true" checked />
+            <input type="checkbox" name='remember' id='remember' value="true" defaultChecked />
             <label htmlFor='remember' className='select-none cursor-pointer'>Ghi nhớ tôi</label>
           </div>
 

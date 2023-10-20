@@ -38,8 +38,6 @@ const useUserStore = create(persist<State & Actions & Dispatch>((set, get) => ({
       })
     })
 
-    console.log({body})
-
     set({
       user: body.user,
       accessToken: body.access_token

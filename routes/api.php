@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Api\AuthController;
+use App\Http\Controllers\Api\TestController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -24,4 +25,10 @@ Route::controller(AuthController::class)->prefix('auth')->group(function () {
     Route::post('/register', 'register');
     Route::post('/logout', 'logout');
     Route::post('/logged', 'logged');
+});
+
+Route::middleware('auth:api')->group(function () {
+    Route::get('/tests', [TestController::class, 'listTest']);
+    Route::get('/tests/{code}', [TestController::class, 'testDetails']);
+    Route::get('/tests/{code}/questions', [TestController::class, 'testDetailsWidthQuestion']);
 });
