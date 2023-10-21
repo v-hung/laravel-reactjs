@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: Oct 13, 2023 at 12:56 PM
--- Server version: 11.3.0-MariaDB-log
--- PHP Version: 8.1.10
+-- Generation Time: Oct 21, 2023 at 10:33 AM
+-- Server version: 11.0.3-MariaDB-log
+-- PHP Version: 8.0.30
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -18,7 +18,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `dropshipping`
+-- Database: `thi`
 --
 
 -- --------------------------------------------------------
@@ -152,7 +152,35 @@ INSERT INTO `data_rows` (`id`, `data_type_id`, `field`, `type`, `display_name`, 
 (52, 6, 'status', 'select_dropdown', 'Status', 1, 1, 1, 1, 1, 1, '{\"default\":\"INACTIVE\",\"options\":{\"INACTIVE\":\"INACTIVE\",\"ACTIVE\":\"ACTIVE\"}}', 9),
 (53, 6, 'created_at', 'timestamp', 'Created At', 1, 1, 1, 0, 0, 0, NULL, 10),
 (54, 6, 'updated_at', 'timestamp', 'Updated At', 1, 0, 0, 0, 0, 0, NULL, 11),
-(55, 6, 'image', 'image', 'Page Image', 0, 1, 1, 1, 1, 1, NULL, 12);
+(55, 6, 'image', 'image', 'Page Image', 0, 1, 1, 1, 1, 1, NULL, 12),
+(56, 7, 'id', 'text', 'Id', 1, 0, 0, 0, 0, 0, '{}', 1),
+(57, 7, 'name', 'text', 'Tên môn', 1, 1, 1, 1, 1, 1, '{}', 2),
+(58, 7, 'slug', 'text', 'Slug', 1, 1, 1, 1, 1, 1, '{\"slugify\":{\"origin\":\"name\"}}', 3),
+(59, 7, 'created_at', 'timestamp', 'Created At', 0, 1, 1, 1, 0, 1, '{}', 4),
+(60, 7, 'updated_at', 'timestamp', 'Updated At', 0, 0, 0, 0, 0, 0, '{}', 5),
+(61, 8, 'id', 'text', 'Id', 1, 0, 0, 0, 0, 0, '{}', 1),
+(63, 8, 'a', 'text', 'A', 0, 1, 1, 1, 1, 1, '{\"display\":{\"width\":\"3\"}}', 3),
+(64, 8, 'b', 'text', 'B', 0, 1, 1, 1, 1, 1, '{\"display\":{\"width\":\"3\"}}', 4),
+(65, 8, 'c', 'text', 'C', 0, 1, 1, 1, 1, 1, '{\"display\":{\"width\":\"3\"}}', 5),
+(66, 8, 'd', 'text', 'D', 0, 1, 1, 1, 1, 1, '{\"display\":{\"width\":\"3\"}}', 6),
+(67, 8, 'answer', 'select_dropdown', 'Kết quả', 0, 1, 1, 1, 1, 1, '{\"default\":\"a\",\"display\":{\"width\":\"6\"},\"options\":{\"a\":\"A\",\"b\":\"B\",\"c\":\"C\",\"d\":\"D\"}}', 7),
+(68, 8, 'type', 'select_dropdown', 'Loại câu hỏi', 0, 1, 1, 1, 1, 1, '{\"default\":\"abcd\",\"display\":{\"width\":\"6\"},\"options\":{\"abcd\":\"ABCD\",\"audio\":\"audio\"}}', 8),
+(69, 8, 'created_at', 'timestamp', 'Created At', 0, 1, 1, 1, 0, 1, '{}', 10),
+(70, 8, 'updated_at', 'timestamp', 'Updated At', 0, 0, 0, 0, 0, 0, '{}', 11),
+(71, 9, 'id', 'text', 'Id', 1, 0, 0, 0, 0, 0, '{}', 1),
+(72, 9, 'subject_id', 'text', 'Subject Id', 1, 1, 1, 1, 1, 1, '{}', 2),
+(73, 9, 'title', 'text', 'Tiêu đề', 1, 1, 1, 1, 1, 1, '{}', 3),
+(74, 9, 'description', 'text_area', 'Mô tả', 0, 1, 1, 1, 1, 1, '{}', 5),
+(75, 9, 'time', 'text', 'Thời gian thi', 1, 1, 1, 1, 1, 1, '{\"display\":{\"width\":\"6\"},\"default\":60}', 6),
+(76, 9, 'number', 'text', 'Số lượt đã thi', 1, 1, 0, 0, 0, 0, '{\"display\":{\"width\":\"6\"},\"default\":0}', 7),
+(77, 9, 'created_at', 'timestamp', 'Created At', 0, 1, 1, 1, 0, 1, '{}', 10),
+(78, 9, 'updated_at', 'timestamp', 'Updated At', 0, 0, 0, 0, 0, 0, '{}', 11),
+(79, 9, 'test_hasone_subject_relationship', 'relationship', 'Môn', 1, 1, 1, 1, 1, 1, '{\"model\":\"App\\\\Models\\\\Subject\",\"table\":\"subjects\",\"type\":\"belongsTo\",\"column\":\"subject_id\",\"key\":\"id\",\"label\":\"name\",\"pivot_table\":\"admins\",\"pivot\":\"0\",\"taggable\":\"0\"}', 9),
+(80, 8, 'question_belongsto_test_relationship', 'relationship', 'Bài kiểm tra', 0, 1, 1, 1, 1, 1, '{\"model\":\"App\\\\Models\\\\Test\",\"table\":\"tests\",\"type\":\"belongsTo\",\"column\":\"test_id\",\"key\":\"id\",\"label\":\"title\",\"pivot_table\":\"admins\",\"pivot\":\"0\",\"taggable\":\"0\"}', 9),
+(81, 8, 'test_id', 'text', 'Test Id', 1, 1, 1, 1, 1, 1, '{}', 12),
+(82, 8, 'content', 'rich_text_box', 'Nội dung', 0, 1, 1, 1, 1, 1, '{}', 2),
+(84, 9, 'code', 'text', 'Mã đề', 1, 1, 1, 1, 1, 1, '{\"placeholder\":\"D\\u1eef li\\u1ec7u tr\\u01b0\\u1eddng n\\u00e0y s\\u1ebd \\u0111\\u01b0\\u1ee3c t\\u1ea1o t\\u1ef1 \\u0111\\u1ed9ng\",\"disabled\":true}', 4),
+(85, 9, 'question_number', 'number', 'Số lượng câu hỏi', 1, 1, 1, 1, 1, 1, '{\"default\":10}', 8);
 
 -- --------------------------------------------------------
 
@@ -188,7 +216,10 @@ INSERT INTO `data_types` (`id`, `name`, `slug`, `display_name_singular`, `displa
 (3, 'roles', 'roles', 'Role', 'Roles', 'voyager-lock', 'TCG\\Voyager\\Models\\Role', NULL, 'TCG\\Voyager\\Http\\Controllers\\VoyagerRoleController', '', 1, 0, NULL, '2023-10-13 05:31:14', '2023-10-13 05:31:14'),
 (4, 'categories', 'categories', 'Category', 'Categories', 'voyager-categories', 'TCG\\Voyager\\Models\\Category', NULL, '', '', 1, 0, NULL, '2023-10-13 05:31:15', '2023-10-13 05:31:15'),
 (5, 'posts', 'posts', 'Post', 'Posts', 'voyager-news', 'TCG\\Voyager\\Models\\Post', 'TCG\\Voyager\\Policies\\PostPolicy', '', '', 1, 0, NULL, '2023-10-13 05:31:15', '2023-10-13 05:31:15'),
-(6, 'pages', 'pages', 'Page', 'Pages', 'voyager-file-text', 'TCG\\Voyager\\Models\\Page', NULL, '', '', 1, 0, NULL, '2023-10-13 05:31:15', '2023-10-13 05:31:15');
+(6, 'pages', 'pages', 'Page', 'Pages', 'voyager-file-text', 'TCG\\Voyager\\Models\\Page', NULL, '', '', 1, 0, NULL, '2023-10-13 05:31:15', '2023-10-13 05:31:15'),
+(7, 'subjects', 'subjects', 'Subject', 'Subjects', NULL, 'App\\Models\\Subject', NULL, NULL, NULL, 1, 0, '{\"order_column\":null,\"order_display_column\":null,\"order_direction\":\"asc\",\"default_search_key\":null,\"scope\":null}', '2023-10-18 00:07:28', '2023-10-18 18:24:22'),
+(8, 'questions', 'questions', 'Câu hỏi', 'Câu hỏi', NULL, 'App\\Models\\Question', NULL, NULL, NULL, 1, 0, '{\"order_column\":null,\"order_display_column\":null,\"order_direction\":\"asc\",\"default_search_key\":null,\"scope\":null}', '2023-10-18 00:11:50', '2023-10-18 18:26:49'),
+(9, 'tests', 'tests', 'Bài kiểm tra', 'Bài kiểm tra', NULL, 'App\\Models\\Test', NULL, 'App\\Http\\Controllers\\Admin\\TestController', NULL, 1, 0, '{\"order_column\":null,\"order_display_column\":null,\"order_direction\":\"asc\",\"default_search_key\":null,\"scope\":null}', '2023-10-18 00:15:52', '2023-10-20 01:34:10');
 
 -- --------------------------------------------------------
 
@@ -254,18 +285,22 @@ CREATE TABLE `menu_items` (
 
 INSERT INTO `menu_items` (`id`, `menu_id`, `title`, `url`, `target`, `icon_class`, `color`, `parent_id`, `order`, `created_at`, `updated_at`, `route`, `parameters`) VALUES
 (1, 1, 'Dashboard', '', '_self', 'voyager-boat', NULL, NULL, 1, '2023-10-13 05:31:14', '2023-10-13 05:31:14', 'voyager.dashboard', NULL),
-(2, 1, 'Media', '', '_self', 'voyager-images', NULL, NULL, 5, '2023-10-13 05:31:14', '2023-10-13 05:31:14', 'voyager.media.index', NULL),
+(2, 1, 'Media', '', '_self', 'voyager-images', NULL, NULL, 4, '2023-10-13 05:31:14', '2023-10-18 01:10:00', 'voyager.media.index', NULL),
 (3, 1, 'Users', '', '_self', 'voyager-person', NULL, NULL, 3, '2023-10-13 05:31:14', '2023-10-13 05:31:14', 'voyager.users.index', NULL),
 (4, 1, 'Roles', '', '_self', 'voyager-lock', NULL, NULL, 2, '2023-10-13 05:31:14', '2023-10-13 05:31:14', 'voyager.roles.index', NULL),
-(5, 1, 'Tools', '', '_self', 'voyager-tools', NULL, NULL, 9, '2023-10-13 05:31:14', '2023-10-13 05:31:14', NULL, NULL),
-(6, 1, 'Menu Builder', '', '_self', 'voyager-list', NULL, 5, 10, '2023-10-13 05:31:14', '2023-10-13 05:31:14', 'voyager.menus.index', NULL),
-(7, 1, 'Database', '', '_self', 'voyager-data', NULL, 5, 11, '2023-10-13 05:31:14', '2023-10-13 05:31:14', 'voyager.database.index', NULL),
-(8, 1, 'Compass', '', '_self', 'voyager-compass', NULL, 5, 12, '2023-10-13 05:31:14', '2023-10-13 05:31:14', 'voyager.compass.index', NULL),
-(9, 1, 'BREAD', '', '_self', 'voyager-bread', NULL, 5, 13, '2023-10-13 05:31:14', '2023-10-13 05:31:14', 'voyager.bread.index', NULL),
-(10, 1, 'Settings', '', '_self', 'voyager-settings', NULL, NULL, 14, '2023-10-13 05:31:14', '2023-10-13 05:31:14', 'voyager.settings.index', NULL),
-(11, 1, 'Categories', '', '_self', 'voyager-categories', NULL, NULL, 8, '2023-10-13 05:31:15', '2023-10-13 05:31:15', 'voyager.categories.index', NULL),
-(12, 1, 'Posts', '', '_self', 'voyager-news', NULL, NULL, 6, '2023-10-13 05:31:15', '2023-10-13 05:31:15', 'voyager.posts.index', NULL),
-(13, 1, 'Pages', '', '_self', 'voyager-file-text', NULL, NULL, 7, '2023-10-13 05:31:15', '2023-10-13 05:31:15', 'voyager.pages.index', NULL);
+(5, 1, 'Tools', '', '_self', 'voyager-tools', NULL, NULL, 9, '2023-10-13 05:31:14', '2023-10-18 01:10:57', NULL, NULL),
+(6, 1, 'Menu Builder', '', '_self', 'voyager-list', NULL, 5, 1, '2023-10-13 05:31:14', '2023-10-18 01:10:01', 'voyager.menus.index', NULL),
+(7, 1, 'Database', '', '_self', 'voyager-data', NULL, 5, 2, '2023-10-13 05:31:14', '2023-10-18 01:10:01', 'voyager.database.index', NULL),
+(8, 1, 'Compass', '', '_self', 'voyager-compass', NULL, 5, 3, '2023-10-13 05:31:14', '2023-10-18 01:10:01', 'voyager.compass.index', NULL),
+(9, 1, 'BREAD', '', '_self', 'voyager-bread', NULL, 5, 4, '2023-10-13 05:31:14', '2023-10-18 01:10:01', 'voyager.bread.index', NULL),
+(10, 1, 'Settings', '', '_self', 'voyager-settings', NULL, NULL, 10, '2023-10-13 05:31:14', '2023-10-18 01:10:57', 'voyager.settings.index', NULL),
+(11, 1, 'Categories', '', '_self', 'voyager-categories', NULL, NULL, 7, '2023-10-13 05:31:15', '2023-10-18 01:10:01', 'voyager.categories.index', NULL),
+(12, 1, 'Posts', '', '_self', 'voyager-news', NULL, NULL, 5, '2023-10-13 05:31:15', '2023-10-18 01:10:00', 'voyager.posts.index', NULL),
+(13, 1, 'Pages', '', '_self', 'voyager-file-text', NULL, NULL, 6, '2023-10-13 05:31:15', '2023-10-18 01:10:00', 'voyager.pages.index', NULL),
+(14, 1, 'Môn học', '', '_self', NULL, '#000000', 17, 1, '2023-10-18 00:07:28', '2023-10-18 01:10:13', 'voyager.subjects.index', 'null'),
+(15, 1, 'Câu hỏi', '', '_self', NULL, NULL, 17, 3, '2023-10-18 00:11:50', '2023-10-18 01:10:06', 'voyager.questions.index', NULL),
+(16, 1, 'Bài kiểm tra', '', '_self', NULL, '#000000', 17, 2, '2023-10-18 00:15:52', '2023-10-18 01:10:44', 'voyager.tests.index', 'null'),
+(17, 1, 'Thi', '', '_self', 'voyager-book', '#000000', NULL, 8, '2023-10-18 01:09:56', '2023-10-18 01:11:35', NULL, '');
 
 -- --------------------------------------------------------
 
@@ -342,7 +377,23 @@ CREATE TABLE `oauth_access_tokens` (
 --
 
 INSERT INTO `oauth_access_tokens` (`id`, `user_id`, `client_id`, `name`, `scopes`, `revoked`, `created_at`, `updated_at`, `expires_at`) VALUES
+('0162452b04fabb1601035272eab7042d7a5761bcc1b8c60da7199ab7125b5fc81dde1c32f44ef6d0', 1, 1, 'fsdaklffjksadfkjhwi', '[]', 0, '2023-10-14 00:06:21', '2023-10-14 00:06:21', '2024-10-14 07:06:21'),
+('058cb45a109e89ea5812485ec88828fd0492ac25423cf94468c10752f34638d30d97d94ba92ce0f4', 1, 1, 'fsdaklffjksadfkjhwi', '[]', 0, '2023-10-14 00:06:11', '2023-10-14 00:06:11', '2024-10-14 07:06:11'),
+('0cbf0e71962021f01dd6e233dd1e94966c938fbf1b89eb80e80faa0bfae40be0d35fe8507f15676f', 1, 1, 'fsdaklffjksadfkjhwi', '[]', 0, '2023-10-14 00:14:57', '2023-10-14 00:14:57', '2024-10-14 07:14:57'),
+('1dc96235af16e894ae38969da5b954ceb357a5bca4b2425b9ed23b05b6fbfcc7234c539e4f53dbe7', 1, 1, 'fsdaklffjksadfkjhwi', '[]', 0, '2023-10-14 00:14:41', '2023-10-14 00:14:41', '2024-10-14 07:14:41'),
+('4bc8f73410137443e67142ad5a72758b16e365c5a0dac309f8799fffef41f395e934c5eb11ac3ff7', 1, 1, 'fsdaklffjksadfkjhwi', '[]', 0, '2023-10-14 01:05:39', '2023-10-14 01:05:39', '2024-10-14 08:05:39'),
+('50701c7525eacb59e80fab55f06ecc09cfd05fdff0e8c2e84b68c0d9bcaf3df7d665a90080465c38', 1, 1, 'fsdaklffjksadfkjhwi', '[]', 0, '2023-10-14 00:05:37', '2023-10-14 00:05:38', '2024-10-14 07:05:37'),
+('6a91da2872dfe39174275889fb999b4693b895e925326d6f8037f87e177e5161a3f1e540a440cadd', 1, 1, 'fsdaklffjksadfkjhwi', '[]', 0, '2023-10-14 00:14:14', '2023-10-14 00:14:14', '2024-10-14 07:14:14'),
+('7f93b880443946a7e013891c00cca1439ef0888acaf6bf005561d4e81375d6de6ed694603f0ff3fb', 1, 1, 'fsdaklffjksadfkjhwi', '[]', 0, '2023-10-14 00:12:10', '2023-10-14 00:12:10', '2024-10-14 07:12:10'),
+('8c51f9cbdac16a1e2c23478c227d4ab81c54622a4fa07ebfbf3c3fd2303779a3251e923c5d28572c', 1, 1, 'fsdaklffjksadfkjhwi', '[]', 0, '2023-10-14 00:24:03', '2023-10-14 00:24:03', '2024-10-14 07:24:03'),
+('8eca7bd7a6398573f5e1d2eab93a6fe419deed7127f0d5498279d7e47a4bccee83311d4dac30aa51', 1, 1, 'fsdaklffjksadfkjhwi', '[]', 0, '2023-10-13 18:19:31', '2023-10-13 18:19:31', '2024-10-14 01:19:31'),
+('9bfa5201945d9eb7b4b5dba22ff3381a9b7e8085b6f3e4347e82cc1fc68509ede8412332c8cb0b59', 1, 1, 'fsdaklffjksadfkjhwi', '[]', 0, '2023-10-14 00:06:43', '2023-10-14 00:06:43', '2024-10-14 07:06:43'),
+('a90f3d17b0d0f956de8ab889fe3f82d51b9474e50e7429d4d19a6cacd5da5a24e138d27ca32b84d4', 1, 1, 'fsdaklffjksadfkjhwi', '[]', 0, '2023-10-13 18:06:53', '2023-10-13 18:06:53', '2024-10-14 01:06:53'),
+('ba793c0ac89462268fc2aa13f8141ff556db311bfc07f1977cfd0ab5c36c8ce0fb7e8e16d43b27d1', 1, 1, 'fsdaklffjksadfkjhwi', '[]', 0, '2023-10-18 19:42:04', '2023-10-18 19:42:04', '2024-10-19 02:42:04'),
 ('bcf7bc6cd15e1d6ce68ee48badb4cbdffb8248a31157a0f866d56572cafc86afd9b1bd3b731e4134', 1, 1, 'viethungit', '[]', 0, '2023-10-13 05:51:21', '2023-10-13 05:51:21', '2024-10-13 12:51:21'),
+('c360f1b5b42f79e07ea80260de09b928abae55ed8eb3c976de980c5481fa8d05cc1d3c1eb7781f49', 1, 1, 'fsdaklffjksadfkjhwi', '[]', 0, '2023-10-14 00:13:20', '2023-10-14 00:13:21', '2024-10-14 07:13:20'),
+('dde8e325f078f94eb53e226de729b9c496f0b446710f6e33e1f5f86a7489a7ffdf4b2f1295972f5b', 1, 1, 'fsdaklffjksadfkjhwi', '[]', 0, '2023-10-14 00:07:02', '2023-10-14 00:07:02', '2024-10-14 07:07:02'),
+('e9041f697c21e9cd98f0873047a09f19a183ce7dc952aed8b3137fe944c7c342fc229a54e0e57184', 1, 1, 'fsdaklffjksadfkjhwi', '[]', 0, '2023-10-14 00:16:00', '2023-10-14 00:16:00', '2024-10-14 07:16:00'),
 ('ef216aa66115cc7a6fdbae61ff635aa89f1a0e8140d6162806b108a1946bcd706a6831018d7aaedc', 1, 1, 'viethungit', '[]', 0, '2023-10-13 05:52:05', '2023-10-13 05:52:05', '2024-10-13 12:52:05');
 
 -- --------------------------------------------------------
@@ -519,7 +570,22 @@ INSERT INTO `permissions` (`id`, `key`, `table_name`, `created_at`, `updated_at`
 (37, 'read_pages', 'pages', '2023-10-13 05:31:15', '2023-10-13 05:31:15'),
 (38, 'edit_pages', 'pages', '2023-10-13 05:31:15', '2023-10-13 05:31:15'),
 (39, 'add_pages', 'pages', '2023-10-13 05:31:15', '2023-10-13 05:31:15'),
-(40, 'delete_pages', 'pages', '2023-10-13 05:31:15', '2023-10-13 05:31:15');
+(40, 'delete_pages', 'pages', '2023-10-13 05:31:15', '2023-10-13 05:31:15'),
+(41, 'browse_subjects', 'subjects', '2023-10-18 00:07:28', '2023-10-18 00:07:28'),
+(42, 'read_subjects', 'subjects', '2023-10-18 00:07:28', '2023-10-18 00:07:28'),
+(43, 'edit_subjects', 'subjects', '2023-10-18 00:07:28', '2023-10-18 00:07:28'),
+(44, 'add_subjects', 'subjects', '2023-10-18 00:07:28', '2023-10-18 00:07:28'),
+(45, 'delete_subjects', 'subjects', '2023-10-18 00:07:28', '2023-10-18 00:07:28'),
+(46, 'browse_questions', 'questions', '2023-10-18 00:11:50', '2023-10-18 00:11:50'),
+(47, 'read_questions', 'questions', '2023-10-18 00:11:50', '2023-10-18 00:11:50'),
+(48, 'edit_questions', 'questions', '2023-10-18 00:11:50', '2023-10-18 00:11:50'),
+(49, 'add_questions', 'questions', '2023-10-18 00:11:50', '2023-10-18 00:11:50'),
+(50, 'delete_questions', 'questions', '2023-10-18 00:11:50', '2023-10-18 00:11:50'),
+(51, 'browse_tests', 'tests', '2023-10-18 00:15:52', '2023-10-18 00:15:52'),
+(52, 'read_tests', 'tests', '2023-10-18 00:15:52', '2023-10-18 00:15:52'),
+(53, 'edit_tests', 'tests', '2023-10-18 00:15:52', '2023-10-18 00:15:52'),
+(54, 'add_tests', 'tests', '2023-10-18 00:15:52', '2023-10-18 00:15:52'),
+(55, 'delete_tests', 'tests', '2023-10-18 00:15:52', '2023-10-18 00:15:52');
 
 -- --------------------------------------------------------
 
@@ -576,7 +642,22 @@ INSERT INTO `permission_role` (`permission_id`, `role_id`) VALUES
 (37, 1),
 (38, 1),
 (39, 1),
-(40, 1);
+(40, 1),
+(41, 1),
+(42, 1),
+(43, 1),
+(44, 1),
+(45, 1),
+(46, 1),
+(47, 1),
+(48, 1),
+(49, 1),
+(50, 1),
+(51, 1),
+(52, 1),
+(53, 1),
+(54, 1),
+(55, 1);
 
 -- --------------------------------------------------------
 
@@ -643,6 +724,39 @@ INSERT INTO `posts` (`id`, `author_id`, `category_id`, `title`, `seo_title`, `ex
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `questions`
+--
+
+CREATE TABLE `questions` (
+  `id` int(10) UNSIGNED NOT NULL,
+  `content` text DEFAULT NULL,
+  `a` varchar(255) DEFAULT NULL,
+  `b` varchar(255) DEFAULT NULL,
+  `c` varchar(255) DEFAULT NULL,
+  `d` varchar(255) DEFAULT NULL,
+  `answer` varchar(255) DEFAULT NULL,
+  `type` varchar(255) DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  `test_id` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `questions`
+--
+
+INSERT INTO `questions` (`id`, `content`, `a`, `b`, `c`, `d`, `answer`, `type`, `created_at`, `updated_at`, `test_id`) VALUES
+(1, '<p>JavaScript l&agrave; ng&ocirc;n ngữ xử l&yacute; ở:</p>', 'Client', 'Server', 'Server / Client', 'Không có dạng nào', 'c', 'abcd', '2023-10-18 19:10:23', '2023-10-18 19:10:23', 1),
+(2, '<p>Javascript l&agrave; ng&ocirc;n ngữ th&ocirc;ng dịch hay bi&ecirc;n dịch</p>', 'Thông dịch', 'Biên dịch', 'Cả hai dạng', 'Không có dạng nào ở trên', 'b', 'abcd', '2023-10-18 19:12:09', '2023-10-18 19:12:09', 1),
+(3, '<p>Phương thức viết chương tr&igrave;nh của Javascript như thế n&agrave;o?</p>', 'Viết riêng một trang', 'Viết chung với HTML', 'Cả hai dạng A và B', 'Không có dạng nào.', 'c', 'abcd', '2023-10-18 19:13:13', '2023-10-18 19:13:13', 1),
+(4, '<p>Javascript l&agrave; ng&ocirc;n ngữ kịch bản c&oacute; dấu được m&atilde; nguồn kh&ocirc;ng?</p>', 'Không dấu được vì các kịch bản chạy ở client.', 'Dấu được vì chương trình hoạt động độc lập với trình duyệt', 'Hai phát biểu đều sai.', 'Hai phát biểu đều đúng', 'a', 'abcd', '2023-10-18 19:15:10', '2023-10-18 19:15:10', 1),
+(5, '<p>JavaScript được bắt đầu bằng?</p>', '<scritp> …</script>', '<Javascript> …<Javascript>', '<java>  </java>', 'Tất cả các dạng trên.', 'a', 'abcd', '2023-10-18 19:36:48', '2023-10-18 19:36:48', 1),
+(6, '<p>Javascript c&oacute; c&aacute;c dạng biến?</p>', 'Number, String, Boolean', 'Number, Integer, char', 'Number, String, Boolean, Null', 'Tất cả các loại trên.', 'd', 'abcd', '2023-10-18 19:37:39', '2023-10-18 19:37:39', 1),
+(7, '<p>Trong Javascript hàm parseInt() dùng để làm gì?</p>', 'Chuyển một chuỗi thành số', 'Chuyển một chuỗi thành số nguyên', 'Chuyển một chuỗi thành số thực', 'Chuyển một số nguyên thành một chuỗi', 'b', 'abcd', '2023-10-18 19:40:30', '2023-10-18 19:40:30', 1);
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `roles`
 --
 
@@ -698,6 +812,81 @@ INSERT INTO `settings` (`id`, `key`, `display_name`, `value`, `details`, `type`,
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `subjects`
+--
+
+CREATE TABLE `subjects` (
+  `id` int(10) UNSIGNED NOT NULL,
+  `name` varchar(255) NOT NULL,
+  `slug` varchar(255) NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `subjects`
+--
+
+INSERT INTO `subjects` (`id`, `name`, `slug`, `created_at`, `updated_at`) VALUES
+(1, 'Toán', 'toan', '2023-10-18 00:16:47', '2023-10-18 00:16:47'),
+(2, 'Tiếng anh', 'tieng-anh', '2023-10-18 00:16:53', '2023-10-18 00:16:53'),
+(3, 'Web', 'web', '2023-10-18 18:22:11', '2023-10-18 18:22:11');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tests`
+--
+
+CREATE TABLE `tests` (
+  `id` int(10) UNSIGNED NOT NULL,
+  `subject_id` int(11) NOT NULL,
+  `title` varchar(255) NOT NULL,
+  `description` text DEFAULT NULL,
+  `time` int(11) NOT NULL DEFAULT 60,
+  `number` int(11) NOT NULL DEFAULT 0,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  `code` varchar(255) NOT NULL,
+  `question_number` int(11) NOT NULL DEFAULT 10
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `tests`
+--
+
+INSERT INTO `tests` (`id`, `subject_id`, `title`, `description`, `time`, `number`, `created_at`, `updated_at`, `code`, `question_number`) VALUES
+(1, 3, 'Kiểm tra kết quả thực tập team IT', NULL, 60, 0, '2023-10-18 00:18:00', '2023-10-20 01:41:56', 'N3hhvf', 50);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `test_histories`
+--
+
+CREATE TABLE `test_histories` (
+  `id` int(10) UNSIGNED NOT NULL,
+  `user_id` int(11) NOT NULL,
+  `test_id` int(11) DEFAULT NULL,
+  `correct` int(11) DEFAULT NULL,
+  `wrong` int(11) DEFAULT NULL,
+  `time` int(11) DEFAULT NULL,
+  `answers` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_bin DEFAULT NULL CHECK (json_valid(`answers`)),
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  `point` float DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `test_histories`
+--
+
+INSERT INTO `test_histories` (`id`, `user_id`, `test_id`, `correct`, `wrong`, `time`, `answers`, `created_at`, `updated_at`, `point`) VALUES
+(1, 1, 1, 1, 6, 1159, '[{\"questionId\":1,\"value\":\"c\"},{\"questionId\":6,\"value\":null},{\"questionId\":4,\"value\":null},{\"questionId\":5,\"value\":null},{\"questionId\":2,\"value\":null},{\"questionId\":7,\"value\":null},{\"questionId\":3,\"value\":null}]', '2023-10-21 02:03:41', '2023-10-21 02:03:41', 0.25);
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `translations`
 --
 
@@ -746,7 +935,44 @@ INSERT INTO `translations` (`id`, `table_name`, `column_name`, `foreign_key`, `l
 (27, 'menu_items', 'title', 5, 'pt', 'Ferramentas', '2023-10-13 05:31:15', '2023-10-13 05:31:15'),
 (28, 'menu_items', 'title', 6, 'pt', 'Menus', '2023-10-13 05:31:15', '2023-10-13 05:31:15'),
 (29, 'menu_items', 'title', 7, 'pt', 'Base de dados', '2023-10-13 05:31:15', '2023-10-13 05:31:15'),
-(30, 'menu_items', 'title', 10, 'pt', 'Configurações', '2023-10-13 05:31:15', '2023-10-13 05:31:15');
+(30, 'menu_items', 'title', 10, 'pt', 'Configurações', '2023-10-13 05:31:15', '2023-10-13 05:31:15'),
+(31, 'data_rows', 'display_name', 71, 'en', 'Id', '2023-10-18 00:18:00', '2023-10-18 00:18:00'),
+(32, 'data_rows', 'display_name', 72, 'en', 'Subject Id', '2023-10-18 00:18:00', '2023-10-18 00:18:00'),
+(33, 'data_rows', 'display_name', 73, 'en', 'Title', '2023-10-18 00:18:00', '2023-10-18 00:18:00'),
+(34, 'data_rows', 'display_name', 74, 'en', 'Description', '2023-10-18 00:18:00', '2023-10-18 00:18:00'),
+(35, 'data_rows', 'display_name', 75, 'en', 'Time', '2023-10-18 00:18:00', '2023-10-18 00:18:00'),
+(36, 'data_rows', 'display_name', 76, 'en', 'Number', '2023-10-18 00:18:00', '2023-10-18 00:18:00'),
+(37, 'data_rows', 'display_name', 77, 'en', 'Created At', '2023-10-18 00:18:00', '2023-10-18 00:18:00'),
+(38, 'data_rows', 'display_name', 78, 'en', 'Updated At', '2023-10-18 00:18:00', '2023-10-18 00:18:00'),
+(39, 'data_rows', 'display_name', 79, 'en', 'subjects', '2023-10-18 00:18:00', '2023-10-18 00:18:00'),
+(40, 'data_types', 'display_name_singular', 9, 'en', 'Test', '2023-10-18 00:18:00', '2023-10-18 00:18:00'),
+(41, 'data_types', 'display_name_plural', 9, 'en', 'Tests', '2023-10-18 00:18:00', '2023-10-18 00:18:00'),
+(42, 'data_rows', 'display_name', 61, 'en', 'Id', '2023-10-18 01:08:46', '2023-10-18 01:08:46'),
+(43, 'data_rows', 'display_name', 62, 'en', 'Title', '2023-10-18 01:08:46', '2023-10-18 01:08:46'),
+(44, 'data_rows', 'display_name', 63, 'en', 'A', '2023-10-18 01:08:46', '2023-10-18 01:08:46'),
+(45, 'data_rows', 'display_name', 64, 'en', 'B', '2023-10-18 01:08:46', '2023-10-18 01:08:46'),
+(46, 'data_rows', 'display_name', 65, 'en', 'C', '2023-10-18 01:08:46', '2023-10-18 01:08:46'),
+(47, 'data_rows', 'display_name', 66, 'en', 'D', '2023-10-18 01:08:46', '2023-10-18 01:08:46'),
+(48, 'data_rows', 'display_name', 67, 'en', 'Answer', '2023-10-18 01:08:46', '2023-10-18 01:08:46'),
+(49, 'data_rows', 'display_name', 68, 'en', 'Type', '2023-10-18 01:08:46', '2023-10-18 01:08:46'),
+(50, 'data_rows', 'display_name', 69, 'en', 'Created At', '2023-10-18 01:08:46', '2023-10-18 01:08:46'),
+(51, 'data_rows', 'display_name', 70, 'en', 'Updated At', '2023-10-18 01:08:46', '2023-10-18 01:08:46'),
+(52, 'data_rows', 'display_name', 80, 'en', 'tests', '2023-10-18 01:08:46', '2023-10-18 01:08:46'),
+(53, 'data_types', 'display_name_singular', 8, 'en', 'Câu hỏi', '2023-10-18 01:08:46', '2023-10-18 01:08:46'),
+(54, 'data_types', 'display_name_plural', 8, 'en', 'Câu hỏi', '2023-10-18 01:08:46', '2023-10-18 01:08:46'),
+(55, 'menu_items', 'title', 14, 'en', 'Môn học', '2023-10-18 01:10:13', '2023-10-18 18:21:44'),
+(56, 'menu_items', 'title', 16, 'en', 'Bài kiểm tra', '2023-10-18 01:10:44', '2023-10-18 18:21:51'),
+(57, 'menu_items', 'title', 17, 'en', 'Thi', '2023-10-18 01:11:35', '2023-10-18 01:11:35'),
+(58, 'data_rows', 'display_name', 81, 'en', 'Test Id', '2023-10-18 18:23:53', '2023-10-18 18:23:53'),
+(59, 'data_rows', 'display_name', 56, 'en', 'Id', '2023-10-18 18:24:22', '2023-10-18 18:24:22'),
+(60, 'data_rows', 'display_name', 57, 'en', 'Name', '2023-10-18 18:24:22', '2023-10-18 18:24:22'),
+(61, 'data_rows', 'display_name', 58, 'en', 'Slug', '2023-10-18 18:24:22', '2023-10-18 18:24:22'),
+(62, 'data_rows', 'display_name', 59, 'en', 'Created At', '2023-10-18 18:24:22', '2023-10-18 18:24:22'),
+(63, 'data_rows', 'display_name', 60, 'en', 'Updated At', '2023-10-18 18:24:22', '2023-10-18 18:24:22'),
+(64, 'data_types', 'display_name_singular', 7, 'en', 'Subject', '2023-10-18 18:24:22', '2023-10-18 18:24:22'),
+(65, 'data_types', 'display_name_plural', 7, 'en', 'Subjects', '2023-10-18 18:24:22', '2023-10-18 18:24:22'),
+(66, 'data_rows', 'display_name', 84, 'en', 'Code', '2023-10-20 01:04:25', '2023-10-20 01:04:25'),
+(67, 'data_rows', 'display_name', 85, 'en', 'Số lượng câu hỏi', '2023-10-20 01:04:25', '2023-10-20 01:04:25');
 
 -- --------------------------------------------------------
 
@@ -773,7 +999,7 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `role_id`, `name`, `email`, `avatar`, `email_verified_at`, `password`, `remember_token`, `settings`, `created_at`, `updated_at`) VALUES
-(1, 1, 'Admin', 'admin@admin.com', 'users/default.png', NULL, '$2y$10$bEVOJf9rmTiH4ZLZG6txS.qZLgDXnUpD9K.pTgsrzC.wQ78ywfl/e', 'AiMzNBbCv62zZwd2pJOIC9MIiNUDU3rimrCynpgQ5wo7rvs8mle6tVTkUUUn', NULL, '2023-10-13 05:31:15', '2023-10-13 05:31:15');
+(1, 1, 'Việt Hùng', 'viet.hung.2898@gmail.com', 'users/default.png', NULL, '$2y$10$bEVOJf9rmTiH4ZLZG6txS.qZLgDXnUpD9K.pTgsrzC.wQ78ywfl/e', 'AiMzNBbCv62zZwd2pJOIC9MIiNUDU3rimrCynpgQ5wo7rvs8mle6tVTkUUUn', '{\"locale\":\"vi\"}', '2023-10-13 05:31:15', '2023-10-18 18:27:11');
 
 -- --------------------------------------------------------
 
@@ -925,6 +1151,12 @@ ALTER TABLE `posts`
   ADD UNIQUE KEY `posts_slug_unique` (`slug`);
 
 --
+-- Indexes for table `questions`
+--
+ALTER TABLE `questions`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `roles`
 --
 ALTER TABLE `roles`
@@ -937,6 +1169,24 @@ ALTER TABLE `roles`
 ALTER TABLE `settings`
   ADD PRIMARY KEY (`id`),
   ADD UNIQUE KEY `settings_key_unique` (`key`);
+
+--
+-- Indexes for table `subjects`
+--
+ALTER TABLE `subjects`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `tests`
+--
+ALTER TABLE `tests`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `test_histories`
+--
+ALTER TABLE `test_histories`
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `translations`
@@ -981,13 +1231,13 @@ ALTER TABLE `categories`
 -- AUTO_INCREMENT for table `data_rows`
 --
 ALTER TABLE `data_rows`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=56;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=86;
 
 --
 -- AUTO_INCREMENT for table `data_types`
 --
 ALTER TABLE `data_types`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT for table `failed_jobs`
@@ -1005,7 +1255,7 @@ ALTER TABLE `menus`
 -- AUTO_INCREMENT for table `menu_items`
 --
 ALTER TABLE `menu_items`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 
 --
 -- AUTO_INCREMENT for table `migrations`
@@ -1035,7 +1285,7 @@ ALTER TABLE `pages`
 -- AUTO_INCREMENT for table `permissions`
 --
 ALTER TABLE `permissions`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=41;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=56;
 
 --
 -- AUTO_INCREMENT for table `personal_access_tokens`
@@ -1050,6 +1300,12 @@ ALTER TABLE `posts`
   MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
+-- AUTO_INCREMENT for table `questions`
+--
+ALTER TABLE `questions`
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+
+--
 -- AUTO_INCREMENT for table `roles`
 --
 ALTER TABLE `roles`
@@ -1062,10 +1318,28 @@ ALTER TABLE `settings`
   MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
+-- AUTO_INCREMENT for table `subjects`
+--
+ALTER TABLE `subjects`
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
+-- AUTO_INCREMENT for table `tests`
+--
+ALTER TABLE `tests`
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- AUTO_INCREMENT for table `test_histories`
+--
+ALTER TABLE `test_histories`
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
 -- AUTO_INCREMENT for table `translations`
 --
 ALTER TABLE `translations`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=68;
 
 --
 -- AUTO_INCREMENT for table `users`

@@ -2,6 +2,7 @@ import { Button, Skeleton } from '@mui/material'
 import React, { useEffect, useLayoutEffect, useState } from 'react'
 import { Link, useParams } from 'react-router-dom'
 import useTestStore, { TestType } from '../stores/test'
+import { formatTime, formatTimeToString } from '../lib/helper'
 
 const StudyDetailsPage = () => {
   const [data, setData] = useState<{
@@ -91,49 +92,56 @@ const StudyDetailsPage = () => {
 
           <p className="font-semibold">Lịch sử làm bài của bạn</p>
 
-          <div className='bg-white p-4 rounded-lg shadow'>
-            <h5 className="text-lg font-semibold text-center">Điểm của bạn: 0</h5>
-          
-            <table className='w-full text-sm mt-6'>
-              <tbody>
-                <tr>
-                  <td>
-                    <div className="flex items-center space-x-1">
-                      <span className="icon text-lg">schedule</span>
-                      <span>Thời gian làm bài:</span>
-                    </div>
-                  </td>
-                  <td className='text-right font-semibold'>4 giây</td>
-                </tr>
-                <tr>
-                  <td>
-                    <div className="flex items-center space-x-1">
-                      <span className="icon text-lg text-green-500">check_circle</span>
-                      <span>Số lượng đúng</span>
-                    </div>
-                  </td>
-                  <td className='text-right font-semibold text-green-500'>0</td>
-                </tr>
-                <tr>
-                  <td>
-                    <div className="flex items-center space-x-1">
-                      <span className="icon text-lg">help</span>
-                      <span>Tổng số câu hỏi trong đề</span>
-                    </div>
-                  </td>
-                  <td className='text-right font-semibold'>50</td>
-                </tr>
-              </tbody>
-            </table>
+          { test.test_histories && test.test_histories.length > 0
+            ? <div className="flex flex-col space-y-4">
+              { test.test_histories.map(v =>
+                <div className='bg-white p-4 rounded-lg shadow'>
+                  <h5 className="text-lg font-semibold text-center">Điểm của bạn: {v.point}</h5>
+                
+                  <table className='w-full text-sm mt-6'>
+                    <tbody>
+                      <tr>
+                        <td>
+                          <div className="flex items-center space-x-1">
+                            <span className="icon text-lg">schedule</span>
+                            <span>Thời gian làm bài:</span>
+                          </div>
+                        </td>
+                        <td className='text-right font-semibold'>{formatTimeToString(v.time)}</td>
+                      </tr>
+                      <tr>
+                        <td>
+                          <div className="flex items-center space-x-1">
+                            <span className="icon text-lg text-green-500">check_circle</span>
+                            <span>Số lượng đúng</span>
+                          </div>
+                        </td>
+                        <td className='text-right font-semibold text-green-500'>{v.correct}</td>
+                      </tr>
+                      <tr>
+                        <td>
+                          <div className="flex items-center space-x-1">
+                            <span className="icon text-lg">help</span>
+                            <span>Tổng số câu hỏi trong đề</span>
+                          </div>
+                        </td>
+                        <td className='text-right font-semibold'>{v.correct + v.wrong}</td>
+                      </tr>
+                    </tbody>
+                  </table>
 
-            {/* @ts-ignore */}
-            <Button variant='contained' color='gray' fullWidth className='mt-4 shadow hover:shadow text-gray-500 font-semibold'>
-              Xem chi tiết bài làm
-              <span className="icon">navigate_next</span>
-            </Button>
+                  {/* @ts-ignore */}
+                  <Button variant='contained' color='gray' fullWidth className='mt-4 shadow hover:shadow text-gray-500 font-semibold'>
+                    Xem chi tiết bài làm
+                    <span className="icon">navigate_next</span>
+                  </Button>
 
-            <p className="text-right mt-3 text-gray-500 text-sm">13/10/2023 23:44</p>
-          </div>
+                  <p className="text-right mt-3 text-gray-500 text-sm">{formatTime(v.created_at)}</p>
+                </div>  
+              )}
+            </div>
+            : <p>Chưa làm lần nào</p>
+          }
         </>
       }
     </div>

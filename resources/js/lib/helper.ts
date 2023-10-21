@@ -1,6 +1,7 @@
 import { VariantType, enqueueSnackbar } from "notistack"
 import { unstable_batchedUpdates } from "react-dom";
 import useUserStore from "../stores/user";
+import { DateTime } from "luxon";
 
 export const promiseFunction = async ({
   loading, setLoading, callback, successTitle = 'Thành công',
@@ -72,4 +73,37 @@ export const Fetch = async (url: string, options?: RequestInit) => {
 
 export const getImage = (url: string) => {
   return `/storage/${url}`
+}
+
+export const formatTimeToCountDown = (time: number) => {
+  const hours = Math.floor(time / 3600)
+  const minutes = Math.floor((time % 3600) / 60)
+  const seconds = time % 60
+  return `${String(hours).padStart(2, '0')} : ${String(minutes).padStart(2, '0')} : ${String(seconds).padStart(2, '0')}`
+}
+
+export const formatTimeToString = (time: number) => {
+  const hours = Math.floor(time / 3600);
+  const minutes = Math.floor((time % 3600) / 60);
+  const seconds = time % 60;
+
+  let formattedTime = '';
+
+  if (hours > 0) {
+    formattedTime += `${hours} giờ `;
+  }
+
+  if (minutes > 0) {
+    formattedTime += `${minutes} phút `;
+  }
+
+  if (seconds > 0 || formattedTime === '') {
+    formattedTime += `${seconds} giây`;
+  }
+
+  return formattedTime.trim();
+};
+
+export const formatTime = (time: Date, format = 'dd/MM/yyyy HH:mm:ss') => {
+  return new DateTime(time).toFormat(format)
 }

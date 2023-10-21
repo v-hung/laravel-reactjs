@@ -10,6 +10,7 @@ const RegisterPage = lazy(() => import("./pages/RegisterPage"))
 const StudyPage = lazy(() => import("./pages/StudyPage"))
 const StudyDetailsPage = lazy(() => import("./pages/StudyDetailsPage"))
 const TestPage = lazy(() => import("./pages/TestPage"))
+const SubmitPage = lazy(() => import("./pages/SubmitPage"))
 
 const Loading = () => (<div className="text-sm p-2 text-center">Đang tải ...</div>)
 
@@ -37,15 +38,21 @@ const router = createBrowserRouter([
                 element: <StudyPage />
               },
               {
-                path: '/exercise',
-                element: <Suspense fallback={<Loading />}>
-                  <StudyPage />
-                </Suspense>
-              },
-              {
                 path: '/exam/:code',
                 element: <Suspense fallback={<Loading />}>
                   <StudyDetailsPage />
+                </Suspense>
+              },
+              {
+                path: '/submit-test/:id',
+                element: <Suspense fallback={<Loading />}>
+                  <SubmitPage />
+                </Suspense>
+              },
+              {
+                path: '/exercise',
+                element: <Suspense fallback={<Loading />}>
+                  <div>fasdf</div>
                 </Suspense>
               },
             ]

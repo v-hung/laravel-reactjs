@@ -15,10 +15,10 @@ const Question = ({
 
   return (
     <div id={`question-${question.id}`} className='w-full rounded-md bg-white shadow'>
-      <p className='p-4'>
+      <div className='p-4'>
         <span className="font-semibold">Câu {index}. </span>
         <div className='content' dangerouslySetInnerHTML={{ __html: question.content }}></div>
-      </p>
+      </div>
 
       <div className="flex flex-wrap -mx-2 p-4">
         <div className="w-1/2 sm:w-1/4 px-2 mb-4">

@@ -31,4 +31,6 @@ Route::middleware('auth:api')->group(function () {
     Route::get('/tests', [TestController::class, 'listTest']);
     Route::get('/tests/{code}', [TestController::class, 'testDetails']);
     Route::get('/tests/{code}/questions', [TestController::class, 'testDetailsWidthQuestion']);
+
+    Route::post('/submit-test', [TestController::class, 'submitTest']);
 });

@@ -3,10 +3,10 @@ import TestHeader from '../components/test/TestHeader'
 import Question from "../components/test/Question";
 import { motion } from "framer-motion";
 import CustomBar from "../components/CustomBar";
-import { Skeleton } from '@mui/material';
+import { Backdrop, CircularProgress, Skeleton } from '@mui/material';
 import useTestStore, { AnswerType, QuestionType, TestType } from '../stores/test';
 import { useParams } from 'react-router-dom';
-import { Global, css } from '@emotion/react'
+import TestPageLoading from "../components/test/TestPageLoading";
 import SimpleBar from 'simplebar';
 
 const TestPage = () => {
@@ -36,6 +36,7 @@ const TestPage = () => {
     }
   }
 
+  const [loadingSubmit, setLoadingSubmit] = useState(false)
   const [loading, setLoading] = useState(true)
   const { code } = useParams()
   const { findQuestion } = useTestStore()
@@ -64,11 +65,19 @@ const TestPage = () => {
   return (
     <>
       { loading
-        ? <TestLoading />
+        ? <TestPageLoading />
         : test == null ? <p className='text-center'>Không tìm thấy đề</p>
         : <CustomBar ref={barEl} className='relative w-full h-full bg-slate-100' onScroll={onScroll}>
           <div className="flex flex-col">
-            <TestHeader className={`sticky top-0 z-10 ${isScroll ? 'bg-white' : ''}`} />
+            <TestHeader 
+              className={`sticky top-0 z-10 ${isScroll ? 'bg-white' : ''}`} 
+              test={test}
+              answers={answers}
+              numberOfUnansweredQuestions={answers.filter(v => v.value == null).length}
+              loadingSubmit={loadingSubmit}
+              setLoadingSubmit={setLoadingSubmit}
+            />
+
             <div className="flex px-4 py-8 space-x-4 items-start mt-2">
               <motion.div className="flex-grow min-w-0 flex flex-col space-y-6"
                 initial={{ x: -50, opacity: 0.5 }}
@@ -98,60 +107,14 @@ const TestPage = () => {
           </div>
         </CustomBar>
       }
+
+      <Backdrop
+        sx={{ color: '#fff', zIndex: (theme) => theme.zIndex.drawer + 1 }}
+        open={loadingSubmit}
+      >
+        <CircularProgress color="inherit" />
+      </Backdrop>
     </>
-  )
-}
-
-const TestLoading = () => {
-  return (
-    <div className='w-full h-full bg-slate-100 flex flex-col overflow-hidden'>
-      <div className="h-14 border-b flex space-x-4 items-center justify-between p-4">
-        <Skeleton variant='rounded' width={100} height={30} />
-        <Skeleton variant='rounded' width={200} height={25} />
-        <Skeleton variant='rounded' width={100} height={30} />
-      </div>
-
-      <div className="flex px-4 py-8 space-x-4 items-start mt-2">
-        <div className="flex-grow min-w-0 flex flex-col space-y-6">
-          { new Array(6).fill(0).map((v,i) =>
-            <div key={i} className='w-full rounded-md bg-white shadow'>
-              <div className="p-4">
-                <Skeleton variant='rounded' width={500} height={20} />
-              </div>
-
-              <div className="flex flex-wrap -mx-2 p-4">
-                <div className="w-1/2 sm:w-1/4 px-2 mb-4">
-                  <Skeleton variant='rounded' width={100} height={30} />
-                </div>
-                <div className="w-1/2 sm:w-1/4 px-2 mb-4">
-                  <Skeleton variant='rounded' width={100} height={30} />
-                </div>
-                <div className="w-1/2 sm:w-1/4 px-2 mb-4">
-                  <Skeleton variant='rounded' width={100} height={30} />
-                </div>
-                <div className="w-1/2 sm:w-1/4 px-2 mb-4">
-                  <Skeleton variant='rounded' width={100} height={30} />
-                </div>
-              </div>
-              
-              <div className="rounded-b-md">
-                <Skeleton variant='rectangular' width={'100%'} height={40} />
-              </div>
-            </div>
-          )}
-        </div>
-
-        <div className="sticky top-[96px] w-96 p-4 rounded bg-white">
-          <Skeleton variant='rounded' width={200} height={20} />
-
-          <div className="mt-2 grid gap-2" style={{ gridTemplateColumns: 'repeat(auto-fill, minmax(60px, 1fr))' }}>
-            {new Array(30).fill(0).map((v,i) =>
-              <Skeleton key={i} variant='rounded' width={'100%'} height={40} />
-            )}
-          </div>
-        </div>
-      </div>
-    </div>
   )
 }
 

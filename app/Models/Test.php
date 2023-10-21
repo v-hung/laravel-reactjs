@@ -11,4 +11,9 @@ class Test extends Model
   {
     return $this->hasMany(Question::class);
   }
+
+  public function testHistories()
+  {
+    return $this->hasMany(TestHistory::class);
+  }
 }
