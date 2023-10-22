@@ -28,13 +28,11 @@ export const promiseFunction = async ({
   } 
   catch (error: any) {
     let variant: VariantType = "error"
-    let text = (typeof error?.message === "string") ? (
-      error.message.startsWith("Error: ") ? error.message.substring("Error: ".length) : error.message
-    ) : 'Có lỗi xảy ra, vui lòng thử lại sau'
+    let text = (typeof error?.message === "string") ? error.message : 'Có lỗi xảy ra, vui lòng thử lại sau'
     enqueueSnackbar(text, { variant })
 
     if (typeof setError == "function") {
-      setError(text)
+      setError(error)
     }
   } 
   finally {
@@ -104,6 +102,7 @@ export const formatTimeToString = (time: number) => {
   return formattedTime.trim();
 };
 
-export const formatTime = (time: Date, format = 'dd/MM/yyyy HH:mm:ss') => {
-  return new DateTime(time).toFormat(format)
+export const formatTime = (time: Date | string, format = 'dd/MM/yyyy HH:mm') => {
+  const date = typeof time === "string" ? DateTime.fromISO(time) : DateTime.fromJSDate(time)
+  return date.toFormat(format)
 }

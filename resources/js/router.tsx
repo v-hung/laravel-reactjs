@@ -1,5 +1,6 @@
-import { Navigate, createBrowserRouter } from "react-router-dom"
+import { Navigate, Outlet, createBrowserRouter } from "react-router-dom"
 import MainLayout from "./components/layouts/MainLayout";
+import NotAuthLayout from "./components/layouts/NotAuthLayout";
 import ErrorPage from "./pages/ErrorPage";
 import { Suspense, lazy } from "react";
 import AuthProvider from "./components/auth/AuthProvider";
@@ -11,6 +12,7 @@ const StudyPage = lazy(() => import("./pages/StudyPage"))
 const StudyDetailsPage = lazy(() => import("./pages/StudyDetailsPage"))
 const TestPage = lazy(() => import("./pages/TestPage"))
 const SubmitPage = lazy(() => import("./pages/SubmitPage"))
+const ClassPage = lazy(() => import("./pages/ClassPage"))
 
 const Loading = () => (<div className="text-sm p-2 text-center">Đang tải ...</div>)
 
@@ -21,6 +23,7 @@ const router = createBrowserRouter([
       return null
     },
     errorElement: <ErrorPage />,
+    element: <Outlet />,
     children: [
       {
         // router authentication
@@ -35,7 +38,9 @@ const router = createBrowserRouter([
               },
               {
                 path: '/exam',
-                element: <StudyPage />
+                element: <Suspense fallback={<Loading />}>
+                  <StudyPage />
+                </Suspense>
               },
               {
                 path: '/exam/:code',
@@ -44,15 +49,15 @@ const router = createBrowserRouter([
                 </Suspense>
               },
               {
-                path: '/submit-test/:id',
+                path: '/submit-test/:code/:id',
                 element: <Suspense fallback={<Loading />}>
                   <SubmitPage />
                 </Suspense>
               },
               {
-                path: '/exercise',
+                path: '/class',
                 element: <Suspense fallback={<Loading />}>
-                  <div>fasdf</div>
+                  <ClassPage/>
                 </Suspense>
               },
             ]
@@ -70,17 +75,23 @@ const router = createBrowserRouter([
 
       // not authentication
       {
-        path: '/auth/login',
-        element: <Suspense fallback={<Loading />}>
-          <LoginPage />
-        </Suspense>
+        path: '/auth',
+        element: <NotAuthLayout />,
+        children: [
+          {
+            path: 'login',
+            element: <Suspense fallback={<Loading />}>
+              <LoginPage />
+            </Suspense>
+          },
+          {
+            path: 'register',
+            element: <Suspense fallback={<Loading />}>
+              <RegisterPage />
+            </Suspense>
+          }
+        ]
       },
-      {
-        path: '/auth/register',
-        element: <Suspense fallback={<Loading />}>
-          <RegisterPage />
-        </Suspense>
-      }
     ]
   },
 ]);

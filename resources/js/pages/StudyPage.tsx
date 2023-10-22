@@ -1,29 +1,34 @@
-import { Accordion, AccordionDetails, AccordionSummary, Button, Container, InputAdornment, Skeleton, TextField } from '@mui/material'
+import { Accordion, AccordionDetails, AccordionSummary, Button, InputAdornment, Skeleton, TextField } from '@mui/material'
+import Container from "../components/layouts/Container";
 import { Link } from 'react-router-dom'
 import useTestStore from '../stores/test'
 import { useEffect, useState } from 'react'
 import { Fetch, promiseFunction } from '../lib/helper'
+import useModalStore from '../stores/modal';
 
 const StudyPage = () => {
-  const { isLoad, tests, dispatch } = useTestStore()
+  const { isLoad, tests, loadTests } = useTestStore()
+  const { dispatch } = useModalStore()
   
   const [loading, setLoading] = useState(false)
 
   useEffect(() => {
-    promiseFunction({
-      loading,
-      setLoading,
-      showSuccessTitle: false,
-      callback: async () => {
-        if (!isLoad) {
-          const { tests } = await Fetch('/api/tests').catch(e => ({ tests: [] }))
-          dispatch({ tests, isLoad: true })
-        }
-        else {
-          setLoading(false)
-        }
+    const load = async () => {
+      if (!isLoad) {
+        await promiseFunction({
+          loading,
+          setLoading,
+          showSuccessTitle: false,
+          callback: async () => {
+            await loadTests()
+          }
+        })
       }
-    })
+      else {
+        setLoading(false)
+      }
+    }
+    load()
   }, [])
 
   return (
@@ -31,7 +36,7 @@ const StudyPage = () => {
       <h5 className="text-xl font-semibold">Đề thi</h5>
 
       <div className="mt-6 flex justify-between">
-        <TextField label="Tìm kiếm" size='small' InputProps={{
+        <TextField label="Tìm kiếm" size='small' className='bg-white' InputProps={{
           startAdornment: (
             <InputAdornment position='start'>
               <span className='icon'>search</span>
@@ -39,7 +44,9 @@ const StudyPage = () => {
           ),
         }} />
 
-        <Button variant='contained' size='small' startIcon={<span className='icon'>add</span>} className='font-semibold'>Tìm giáo viên</Button>
+        <Button variant='contained' size='small' startIcon={<span className='icon'>add</span>} className='font-semibold'
+          onClick={() => dispatch({isOpen: 'joinClass'})}
+        >Tìm lớp</Button>
       </div>
 
       <div className="mt-6">
@@ -51,7 +58,7 @@ const StudyPage = () => {
               <div className="w-8 h-8 rounded-full bg-slate-200 flex justify-center items-center">
                 <span className="font-semibold">VH</span>
               </div>
-              <p className='font-semibold'>Công ty cổ phần CN và TT KennaTech</p>
+              <p className='font-semibold'>Công ty cổ phần CN và TT số KennaTech</p>
               <p>Tháng 11.2023 </p>
               <p className="text-sm text-slate-500">(Sĩ số: 3 - Năm học: 2023 - 2024)</p>
             </div>

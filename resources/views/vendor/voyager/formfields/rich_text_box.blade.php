@@ -25,7 +25,9 @@
         plugins: oldConfig.plugins + ' codesample',
         toolbar: oldConfig.toolbar + `| codesample`,
         entity_encoding: 'raw',
-        verify_html: false
+        verify_html: false,
+        height: 300,
+        min_height: 300,
       }
 
       tinymce.init(config);

@@ -50,6 +50,16 @@
         @foreach(config('voyager.additional_css') as $css)<link rel="stylesheet" type="text/css" href="{{ asset($css) }}">@endforeach
     @endif
 
+    <style>
+      .table, body, html, .form-control, .panel-body .select2-selection {
+        color: #333;
+      }
+
+      .form-control, .panel-body .select2-selection {
+        border-color: #c4c4c4;
+      }
+    </style>
+
     <script src="{{asset('asset/js/prism.js')}}"></script>
 
     @yield('head')

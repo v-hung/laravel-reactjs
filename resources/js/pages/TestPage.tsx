@@ -8,6 +8,8 @@ import useTestStore, { AnswerType, QuestionType, TestType } from '../stores/test
 import { useParams } from 'react-router-dom';
 import TestPageLoading from "../components/test/TestPageLoading";
 import SimpleBar from 'simplebar';
+import Prism from "prismjs";
+import "prismjs/themes/prism.min.css";
 
 const TestPage = () => {
   const [test, setTest] = useState<TestType | null>(null)
@@ -79,18 +81,7 @@ const TestPage = () => {
             />
 
             <div className="flex px-4 py-8 space-x-4 items-start mt-2">
-              <motion.div className="flex-grow min-w-0 flex flex-col space-y-6"
-                initial={{ x: -50, opacity: 0.5 }}
-                animate={{ x: 0, opacity: 1 }}
-                transition={{ duration: 1 }}
-              >
-                { questions.map((v,i) => {
-                  const answer = findAnswer(v.id)
-
-                  if (answer)
-                    return <Question key={i} question={v} answer={answer} setAnswer={handelSetAnswer} index={i + 1} />
-                })}
-              </motion.div>
+              <RenderQuestions questions={questions} findAnswer={findAnswer} handelSetAnswer={handelSetAnswer} />
               <motion.div className="hidden md:block sticky top-[96px] w-96 p-4 rounded bg-white"
                 initial={{ y: 50, opacity: 0.5 }}
                 animate={{ y: 0, opacity: 1 }}
@@ -115,6 +106,33 @@ const TestPage = () => {
         <CircularProgress color="inherit" />
       </Backdrop>
     </>
+  )
+}
+
+const RenderQuestions = ({
+  questions, findAnswer, handelSetAnswer
+}: {
+  questions: QuestionType[],
+  findAnswer: (id: number) => AnswerType | undefined,
+  handelSetAnswer: (answer: AnswerType) => void
+}) => {
+
+  useEffect(() => {
+    Prism.highlightAll()
+  }, [])
+  return (
+    <motion.div className="flex-grow min-w-0 flex flex-col space-y-6"
+      initial={{ x: -50, opacity: 0.5 }}
+      animate={{ x: 0, opacity: 1 }}
+      transition={{ duration: 1 }}
+    >
+      { questions.map((v,i) => {
+        const answer = findAnswer(v.id)
+
+        if (answer)
+          return <Question key={i} question={v} answer={answer} setAnswer={handelSetAnswer} index={i + 1} />
+      })}
+    </motion.div>
   )
 }
 

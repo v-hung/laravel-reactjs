@@ -8,8 +8,10 @@ type State = {
 }
 
 type Actions = {
+  loadTests: () => Promise<void>,
   findTest: (code: string) => Promise<TestType | null>,
   findQuestion: (code: string) => Promise<{test: TestType | null, questions: QuestionType[]}>,
+  findHistory: (code: string, id: number) => Promise<{test: TestType | null, history:TestHistoryType | null}>,
   addTestHistory: (code: string, history: TestHistoryType) => Promise<void>
 }
 
@@ -20,14 +22,23 @@ type Dispatch = {
 const useTestStore = create<State & Actions & Dispatch>((set, get) => ({
   isLoad: false,
   tests: [],
+  loadTests: async () => {
+    const { tests }: { tests: TestType[] } = await Fetch('/api/tests').catch(e => ({ tests: [] }))
+    console.log('fasdf')
+
+    let testAdd = tests.filter(v => !get().tests.some(v2 => v2.id == v.id))
+    set(state => ({ tests: [...state.tests, ...testAdd], isLoad: true }))
+    return
+  },
   findTest: async (code) => {
     let test = get().tests.find(v => v.code == code) || null
 
-    if (!test) {
-      test = (await Fetch(`/api/tests/${code}`).catch(e => ({ test: null }))).test
-      if (test) {
-        set(({ tests: [...get().tests, test] }))
-      }
+    if (!test || (test.test_histories == null || test.test_histories == undefined)) {
+      let testTemp = (await Fetch(`/api/tests/${code}`).catch(e => ({ test: null }))).test
+      let tests = test ? get().tests.map(v => v.id == testTemp.id ? testTemp : v) : [...get().tests, testTemp]
+
+      set(({ tests: tests }))
+      return testTemp
     }
 
     return test
@@ -50,6 +61,18 @@ const useTestStore = create<State & Actions & Dispatch>((set, get) => ({
     }
 
     return { test, questions }
+  },
+  findHistory: async (code, id) => {
+    const test = await get().findTest(code)
+
+    if (!test) return {
+      test: null,
+      history: null
+    }
+
+    let history = test.test_histories?.find(v => v.id == id) || null
+
+    return { test, history }
   },
   addTestHistory: async (code, history) => {
     const test = await get().findTest(code)

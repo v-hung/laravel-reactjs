@@ -41,13 +41,12 @@ class AuthController extends Controller {
   {
     $validator = Validator::make($request->all(), [
       'name' => 'required',
-      'email' => 'required|email',
+      'email' => 'required|email|unique:users',
       'password' => 'required',
-      'c_password' => 'required|same:password',
     ]);
 
     if($validator->fails()){
-      return $this->sendError('Validation Error.', $validator->errors());       
+      return response()->json(['errors' => $validator->errors()], 400);       
     }
     $input = $request->all();
     $input['password'] = bcrypt($input['password']);

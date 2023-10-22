@@ -51,7 +51,7 @@ const UserIcon = ({ user }: { user: UserType }) => {
 
   const handelLogout = () => {
     logout()
-    navigate('/auth/login')
+    // navigate('/auth/login')
     // setAnchorEl(null)
   }
 

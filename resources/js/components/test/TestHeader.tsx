@@ -45,13 +45,15 @@ const TestHeader: FC<State> = (props)  => {
       body: JSON.stringify({
         code: test.code,
         answers: answers,
-        time: timeLeft
+        time: countDownTime - timeLeft
       })
     }).catch(e => ({ testHistory: null }))
 
     if (testHistory) {
       await addTestHistory(test.code, testHistory)
-      navigate('/submit-test/' + testHistory.id)
+      navigate(`/submit-test/${test.code}/${testHistory.id}`, {
+        replace: true
+      })
     }
     else {
       navigate('/')

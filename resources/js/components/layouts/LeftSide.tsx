@@ -1,12 +1,15 @@
 import { Tooltip } from '@mui/material'
-import React, { useEffect, useState } from 'react'
+import React, { FC, HTMLAttributes, useEffect, useState } from 'react'
 import { Link, NavLink, useLocation, useResolvedPath } from 'react-router-dom'
 import { motion } from "framer-motion"
+import { twMerge } from 'tailwind-merge'
 
-const LeftSide = () => {
+const LeftSide: FC<HTMLAttributes<HTMLDivElement>> = (props) => {
+  const { className, ...rest } = props
+
   const [menu, setMenu] = useState([
     { icon: 'library_books', title: 'Đề thi', path: '/exam' },
-    { icon: 'quiz', title: 'Bài tập', path: '/exercise' },
+    { icon: 'school', title: 'Lớp', path: '/class' },
   ])
 
   const [positionRouterActive, setPositionRouterActive] = useState(0)
@@ -21,7 +24,7 @@ const LeftSide = () => {
   }, [location])
 
   return (
-    <div className='w-20 text-white flex flex-col'>
+    <div {...rest} className={twMerge('w-20 text-white flex flex-col', className)}>
       <div className="h-16 grid place-items-center border-b mr-4">
         <Link to={'/'} className="text-2xl font-black">VH</Link>
       </div>
@@ -29,7 +32,7 @@ const LeftSide = () => {
       <div className="flex-grow relative overflow-y-auto flex flex-col py-6 pr-4">
         {menu.map((v,i) =>
           <NavLink key={i} to={v.path} className={({ isActive }) =>
-            `relative z-10 ${isActive ? "text-blue-600" : ""}`
+            `relative z-10 ${isActive || i == positionRouterActive ? "text-blue-600" : ""}`
           }>
             <Tooltip title={v.title} placement="right" arrow>
               <span className="icon h-[50px]">{v.icon}</span>

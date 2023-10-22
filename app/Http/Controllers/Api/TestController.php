@@ -22,7 +22,9 @@ class TestController extends Controller
 
   public function testDetails($code)
   {
-    $test = Test::where('code', $code)->with('testHistories')->first();
+    $test = Test::where('code', $code)->with('testHistories', function ($q) {
+      return $q->orderBy('created_at', 'desc');
+    })->first();
 
     return response()->json([
       'test' => $test
@@ -85,7 +87,7 @@ class TestController extends Controller
       'wrong'   => $wrong,
       'time'    => $time,
       'answers' => json_encode($answers),
-      'point'   => round($correct / ($correct + $wrong) * 4) / 4
+      'point'   => round($correct / ($correct + $wrong) * 40) / 4
     ]);
 
     return response()->json([

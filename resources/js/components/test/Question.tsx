@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import MathContent from "./MathContent";
 import InlineMath from './InlineMath';
 import { AnswerType, QuestionType } from '../../stores/test';

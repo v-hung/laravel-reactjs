@@ -6,7 +6,7 @@ const Container: FC<HTMLAttributes<HTMLDivElement>> = (props) => {
   const { className, children, ...rest } = props
 
   return (
-    <div {...rest} className={twMerge('w-full max-w-screen-lg mx-auto', className)}>
+    <div {...rest} className={twMerge('w-full max-w-screen-xl mx-auto', className)}>
       {children}
     </div>
   )

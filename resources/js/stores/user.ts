@@ -18,6 +18,7 @@ type State = {
 
 type Actions = {
   login: (data: {email: string, password: string, remember: boolean}) => Promise<void>,
+  register: (data: {email: string, password: string, name: string}) => Promise<void>,
   logout: () => void,
   logged: () => Promise<any>,
 }
@@ -37,6 +38,19 @@ const useUserStore = create(persist<State & Actions & Dispatch>((set, get) => ({
         email, password, remember
       })
     })
+
+    set({
+      user: body.user,
+      accessToken: body.access_token
+    })
+  },
+  register: async ({ email, password, name}) => {
+    const body = await Fetch('/api/auth/register', {
+      method: 'post',
+      body: JSON.stringify({
+        email, password, name
+      })
+    }).catch(async (e) => {throw await e.json()})
 
     set({
       user: body.user,
