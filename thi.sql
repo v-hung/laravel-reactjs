@@ -3,8 +3,8 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: Oct 21, 2023 at 10:33 AM
--- Server version: 11.0.3-MariaDB-log
+-- Generation Time: Oct 22, 2023 at 03:50 PM
+-- Server version: 11.3.0-MariaDB-log
 -- PHP Version: 8.0.30
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
@@ -70,6 +70,21 @@ CREATE TABLE `categories` (
 INSERT INTO `categories` (`id`, `parent_id`, `order`, `name`, `slug`, `created_at`, `updated_at`) VALUES
 (1, NULL, 1, 'Category 1', 'category-1', '2023-10-13 05:31:15', '2023-10-13 05:31:15'),
 (2, NULL, 1, 'Category 2', 'category-2', '2023-10-13 05:31:15', '2023-10-13 05:31:15');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `classrooms`
+--
+
+CREATE TABLE `classrooms` (
+  `id` int(10) UNSIGNED NOT NULL,
+  `title` varchar(255) DEFAULT NULL,
+  `user_id` int(11) DEFAULT NULL,
+  `code` varchar(255) DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
 
@@ -159,10 +174,10 @@ INSERT INTO `data_rows` (`id`, `data_type_id`, `field`, `type`, `display_name`, 
 (59, 7, 'created_at', 'timestamp', 'Created At', 0, 1, 1, 1, 0, 1, '{}', 4),
 (60, 7, 'updated_at', 'timestamp', 'Updated At', 0, 0, 0, 0, 0, 0, '{}', 5),
 (61, 8, 'id', 'text', 'Id', 1, 0, 0, 0, 0, 0, '{}', 1),
-(63, 8, 'a', 'text', 'A', 0, 1, 1, 1, 1, 1, '{\"display\":{\"width\":\"3\"}}', 3),
-(64, 8, 'b', 'text', 'B', 0, 1, 1, 1, 1, 1, '{\"display\":{\"width\":\"3\"}}', 4),
-(65, 8, 'c', 'text', 'C', 0, 1, 1, 1, 1, 1, '{\"display\":{\"width\":\"3\"}}', 5),
-(66, 8, 'd', 'text', 'D', 0, 1, 1, 1, 1, 1, '{\"display\":{\"width\":\"3\"}}', 6),
+(63, 8, 'a', 'text', 'A', 0, 0, 1, 1, 1, 1, '{\"display\":{\"width\":\"3\"}}', 3),
+(64, 8, 'b', 'text', 'B', 0, 0, 1, 1, 1, 1, '{\"display\":{\"width\":\"3\"}}', 4),
+(65, 8, 'c', 'text', 'C', 0, 0, 1, 1, 1, 1, '{\"display\":{\"width\":\"3\"}}', 5),
+(66, 8, 'd', 'text', 'D', 0, 0, 1, 1, 1, 1, '{\"display\":{\"width\":\"3\"}}', 6),
 (67, 8, 'answer', 'select_dropdown', 'Kết quả', 0, 1, 1, 1, 1, 1, '{\"default\":\"a\",\"display\":{\"width\":\"6\"},\"options\":{\"a\":\"A\",\"b\":\"B\",\"c\":\"C\",\"d\":\"D\"}}', 7),
 (68, 8, 'type', 'select_dropdown', 'Loại câu hỏi', 0, 1, 1, 1, 1, 1, '{\"default\":\"abcd\",\"display\":{\"width\":\"6\"},\"options\":{\"abcd\":\"ABCD\",\"audio\":\"audio\"}}', 8),
 (69, 8, 'created_at', 'timestamp', 'Created At', 0, 1, 1, 1, 0, 1, '{}', 10),
@@ -176,11 +191,19 @@ INSERT INTO `data_rows` (`id`, `data_type_id`, `field`, `type`, `display_name`, 
 (77, 9, 'created_at', 'timestamp', 'Created At', 0, 1, 1, 1, 0, 1, '{}', 10),
 (78, 9, 'updated_at', 'timestamp', 'Updated At', 0, 0, 0, 0, 0, 0, '{}', 11),
 (79, 9, 'test_hasone_subject_relationship', 'relationship', 'Môn', 1, 1, 1, 1, 1, 1, '{\"model\":\"App\\\\Models\\\\Subject\",\"table\":\"subjects\",\"type\":\"belongsTo\",\"column\":\"subject_id\",\"key\":\"id\",\"label\":\"name\",\"pivot_table\":\"admins\",\"pivot\":\"0\",\"taggable\":\"0\"}', 9),
-(80, 8, 'question_belongsto_test_relationship', 'relationship', 'Bài kiểm tra', 0, 1, 1, 1, 1, 1, '{\"model\":\"App\\\\Models\\\\Test\",\"table\":\"tests\",\"type\":\"belongsTo\",\"column\":\"test_id\",\"key\":\"id\",\"label\":\"title\",\"pivot_table\":\"admins\",\"pivot\":\"0\",\"taggable\":\"0\"}', 9),
+(80, 8, 'question_belongsto_test_relationship', 'relationship', 'Bài kiểm tra', 1, 1, 1, 1, 1, 1, '{\"model\":\"App\\\\Models\\\\Test\",\"table\":\"tests\",\"type\":\"belongsTo\",\"column\":\"test_id\",\"key\":\"id\",\"label\":\"title\",\"pivot_table\":\"admins\",\"pivot\":\"0\",\"taggable\":\"0\"}', 9),
 (81, 8, 'test_id', 'text', 'Test Id', 1, 1, 1, 1, 1, 1, '{}', 12),
 (82, 8, 'content', 'rich_text_box', 'Nội dung', 0, 1, 1, 1, 1, 1, '{}', 2),
 (84, 9, 'code', 'text', 'Mã đề', 1, 1, 1, 1, 1, 1, '{\"placeholder\":\"D\\u1eef li\\u1ec7u tr\\u01b0\\u1eddng n\\u00e0y s\\u1ebd \\u0111\\u01b0\\u1ee3c t\\u1ea1o t\\u1ef1 \\u0111\\u1ed9ng\",\"disabled\":true}', 4),
-(85, 9, 'question_number', 'number', 'Số lượng câu hỏi', 1, 1, 1, 1, 1, 1, '{\"default\":10}', 8);
+(85, 9, 'question_number', 'number', 'Số lượng câu hỏi', 1, 1, 1, 1, 1, 1, '{\"default\":10}', 8),
+(86, 10, 'id', 'text', 'Id', 1, 0, 0, 0, 0, 0, '{}', 1),
+(87, 10, 'title', 'text', 'Tên lớp', 0, 1, 1, 1, 1, 1, '{}', 2),
+(88, 10, 'user_id', 'text', 'Người tạo', 0, 1, 1, 1, 1, 1, '{}', 3),
+(89, 10, 'code', 'text', 'mã lớp', 0, 1, 1, 1, 1, 1, '{\"placeholder\":\"D\\u1eef li\\u1ec7u tr\\u01b0\\u1eddng n\\u00e0y s\\u1ebd \\u0111\\u01b0\\u1ee3c t\\u1ea1o t\\u1ef1 \\u0111\\u1ed9ng\",\"disabled\":true}', 4),
+(90, 10, 'created_at', 'timestamp', 'Created At', 0, 1, 1, 1, 0, 1, '{}', 5),
+(91, 10, 'updated_at', 'timestamp', 'Updated At', 0, 0, 0, 0, 0, 0, '{}', 6),
+(92, 10, 'classroom_belongsto_user_relationship', 'relationship', 'Người tạo', 0, 1, 1, 1, 1, 1, '{\"model\":\"App\\\\Models\\\\User\",\"table\":\"users\",\"type\":\"belongsTo\",\"column\":\"user_id\",\"key\":\"id\",\"label\":\"name\",\"pivot_table\":\"admins\",\"pivot\":\"0\",\"taggable\":\"0\"}', 7),
+(93, 10, 'classroom_belongstomany_user_relationship', 'relationship', 'Danh sách lớp', 0, 1, 1, 1, 1, 1, '{\"model\":\"App\\\\Models\\\\User\",\"table\":\"users\",\"type\":\"belongsToMany\",\"column\":\"id\",\"key\":\"id\",\"label\":\"name\",\"pivot_table\":\"pivot_classroom_user\",\"pivot\":\"1\",\"taggable\":\"0\"}', 8);
 
 -- --------------------------------------------------------
 
@@ -218,8 +241,9 @@ INSERT INTO `data_types` (`id`, `name`, `slug`, `display_name_singular`, `displa
 (5, 'posts', 'posts', 'Post', 'Posts', 'voyager-news', 'TCG\\Voyager\\Models\\Post', 'TCG\\Voyager\\Policies\\PostPolicy', '', '', 1, 0, NULL, '2023-10-13 05:31:15', '2023-10-13 05:31:15'),
 (6, 'pages', 'pages', 'Page', 'Pages', 'voyager-file-text', 'TCG\\Voyager\\Models\\Page', NULL, '', '', 1, 0, NULL, '2023-10-13 05:31:15', '2023-10-13 05:31:15'),
 (7, 'subjects', 'subjects', 'Subject', 'Subjects', NULL, 'App\\Models\\Subject', NULL, NULL, NULL, 1, 0, '{\"order_column\":null,\"order_display_column\":null,\"order_direction\":\"asc\",\"default_search_key\":null,\"scope\":null}', '2023-10-18 00:07:28', '2023-10-18 18:24:22'),
-(8, 'questions', 'questions', 'Câu hỏi', 'Câu hỏi', NULL, 'App\\Models\\Question', NULL, NULL, NULL, 1, 0, '{\"order_column\":null,\"order_display_column\":null,\"order_direction\":\"asc\",\"default_search_key\":null,\"scope\":null}', '2023-10-18 00:11:50', '2023-10-18 18:26:49'),
-(9, 'tests', 'tests', 'Bài kiểm tra', 'Bài kiểm tra', NULL, 'App\\Models\\Test', NULL, 'App\\Http\\Controllers\\Admin\\TestController', NULL, 1, 0, '{\"order_column\":null,\"order_display_column\":null,\"order_direction\":\"asc\",\"default_search_key\":null,\"scope\":null}', '2023-10-18 00:15:52', '2023-10-20 01:34:10');
+(8, 'questions', 'questions', 'Câu hỏi', 'Câu hỏi', NULL, 'App\\Models\\Question', NULL, NULL, NULL, 1, 0, '{\"order_column\":null,\"order_display_column\":null,\"order_direction\":\"asc\",\"default_search_key\":null,\"scope\":null}', '2023-10-18 00:11:50', '2023-10-22 05:31:47'),
+(9, 'tests', 'tests', 'Bài kiểm tra', 'Bài kiểm tra', NULL, 'App\\Models\\Test', NULL, 'App\\Http\\Controllers\\Admin\\TestController', NULL, 1, 0, '{\"order_column\":null,\"order_display_column\":null,\"order_direction\":\"asc\",\"default_search_key\":null,\"scope\":null}', '2023-10-18 00:15:52', '2023-10-20 01:34:10'),
+(10, 'classrooms', 'classrooms', 'Lớp', 'Lớp', NULL, 'App\\Models\\Classroom', NULL, 'App\\Http\\Controllers\\Admin\\ClassroomController', NULL, 1, 0, '{\"order_column\":null,\"order_display_column\":null,\"order_direction\":\"asc\",\"default_search_key\":null,\"scope\":null}', '2023-10-22 04:07:38', '2023-10-22 04:10:41');
 
 -- --------------------------------------------------------
 
@@ -300,7 +324,8 @@ INSERT INTO `menu_items` (`id`, `menu_id`, `title`, `url`, `target`, `icon_class
 (14, 1, 'Môn học', '', '_self', NULL, '#000000', 17, 1, '2023-10-18 00:07:28', '2023-10-18 01:10:13', 'voyager.subjects.index', 'null'),
 (15, 1, 'Câu hỏi', '', '_self', NULL, NULL, 17, 3, '2023-10-18 00:11:50', '2023-10-18 01:10:06', 'voyager.questions.index', NULL),
 (16, 1, 'Bài kiểm tra', '', '_self', NULL, '#000000', 17, 2, '2023-10-18 00:15:52', '2023-10-18 01:10:44', 'voyager.tests.index', 'null'),
-(17, 1, 'Thi', '', '_self', 'voyager-book', '#000000', NULL, 8, '2023-10-18 01:09:56', '2023-10-18 01:11:35', NULL, '');
+(17, 1, 'Thi', '', '_self', 'voyager-book', '#000000', NULL, 8, '2023-10-18 01:09:56', '2023-10-18 01:11:35', NULL, ''),
+(18, 1, 'Lớp', '', '_self', NULL, NULL, NULL, 11, '2023-10-22 04:07:38', '2023-10-22 04:07:38', 'voyager.classrooms.index', NULL);
 
 -- --------------------------------------------------------
 
@@ -381,14 +406,20 @@ INSERT INTO `oauth_access_tokens` (`id`, `user_id`, `client_id`, `name`, `scopes
 ('058cb45a109e89ea5812485ec88828fd0492ac25423cf94468c10752f34638d30d97d94ba92ce0f4', 1, 1, 'fsdaklffjksadfkjhwi', '[]', 0, '2023-10-14 00:06:11', '2023-10-14 00:06:11', '2024-10-14 07:06:11'),
 ('0cbf0e71962021f01dd6e233dd1e94966c938fbf1b89eb80e80faa0bfae40be0d35fe8507f15676f', 1, 1, 'fsdaklffjksadfkjhwi', '[]', 0, '2023-10-14 00:14:57', '2023-10-14 00:14:57', '2024-10-14 07:14:57'),
 ('1dc96235af16e894ae38969da5b954ceb357a5bca4b2425b9ed23b05b6fbfcc7234c539e4f53dbe7', 1, 1, 'fsdaklffjksadfkjhwi', '[]', 0, '2023-10-14 00:14:41', '2023-10-14 00:14:41', '2024-10-14 07:14:41'),
+('3298c382c790790bdf39d843bab8d9cfeff03a94827090398d11f8f61da692d3b910f42ae9a407f2', 2, 1, 'viethungit', '[]', 0, '2023-10-21 08:47:33', '2023-10-21 08:47:33', '2024-10-21 15:47:33'),
 ('4bc8f73410137443e67142ad5a72758b16e365c5a0dac309f8799fffef41f395e934c5eb11ac3ff7', 1, 1, 'fsdaklffjksadfkjhwi', '[]', 0, '2023-10-14 01:05:39', '2023-10-14 01:05:39', '2024-10-14 08:05:39'),
 ('50701c7525eacb59e80fab55f06ecc09cfd05fdff0e8c2e84b68c0d9bcaf3df7d665a90080465c38', 1, 1, 'fsdaklffjksadfkjhwi', '[]', 0, '2023-10-14 00:05:37', '2023-10-14 00:05:38', '2024-10-14 07:05:37'),
 ('6a91da2872dfe39174275889fb999b4693b895e925326d6f8037f87e177e5161a3f1e540a440cadd', 1, 1, 'fsdaklffjksadfkjhwi', '[]', 0, '2023-10-14 00:14:14', '2023-10-14 00:14:14', '2024-10-14 07:14:14'),
+('719caa6a1f708b26353c90bf2a920dcf7aa4c03b04e3cfdb3f0c31a211356590d1acdebb975ce2a1', 1, 1, 'viethungit', '[]', 1, '2023-10-21 07:53:22', '2023-10-21 07:54:21', '2024-10-21 14:53:22'),
+('7d4beb162940dc57b4a93e3294e196fef9e18d8e01c0114bad21555c4efcaba21c20dd1dfb2a766d', 1, 1, 'viethungit', '[]', 1, '2023-10-21 07:54:28', '2023-10-21 07:55:10', '2024-10-21 14:54:28'),
 ('7f93b880443946a7e013891c00cca1439ef0888acaf6bf005561d4e81375d6de6ed694603f0ff3fb', 1, 1, 'fsdaklffjksadfkjhwi', '[]', 0, '2023-10-14 00:12:10', '2023-10-14 00:12:10', '2024-10-14 07:12:10'),
 ('8c51f9cbdac16a1e2c23478c227d4ab81c54622a4fa07ebfbf3c3fd2303779a3251e923c5d28572c', 1, 1, 'fsdaklffjksadfkjhwi', '[]', 0, '2023-10-14 00:24:03', '2023-10-14 00:24:03', '2024-10-14 07:24:03'),
 ('8eca7bd7a6398573f5e1d2eab93a6fe419deed7127f0d5498279d7e47a4bccee83311d4dac30aa51', 1, 1, 'fsdaklffjksadfkjhwi', '[]', 0, '2023-10-13 18:19:31', '2023-10-13 18:19:31', '2024-10-14 01:19:31'),
+('93770a0c5432865c69e86ed8bbea420b1908fc489f4ebf89590fae5ad5ef8b6beba58f72841d3964', 1, 1, 'viethungit', '[]', 0, '2023-10-22 04:20:33', '2023-10-22 04:20:33', '2024-10-22 11:20:33'),
 ('9bfa5201945d9eb7b4b5dba22ff3381a9b7e8085b6f3e4347e82cc1fc68509ede8412332c8cb0b59', 1, 1, 'fsdaklffjksadfkjhwi', '[]', 0, '2023-10-14 00:06:43', '2023-10-14 00:06:43', '2024-10-14 07:06:43'),
 ('a90f3d17b0d0f956de8ab889fe3f82d51b9474e50e7429d4d19a6cacd5da5a24e138d27ca32b84d4', 1, 1, 'fsdaklffjksadfkjhwi', '[]', 0, '2023-10-13 18:06:53', '2023-10-13 18:06:53', '2024-10-14 01:06:53'),
+('aeaf6586aed720357d643b112b599b3f8bb36af018c80c1c26a0909c8fd024dabefef3daad20c716', 1, 1, 'viethungit', '[]', 1, '2023-10-21 09:12:02', '2023-10-22 04:18:19', '2024-10-21 16:12:02'),
+('b4c0f8ee8b20e8cf072fb0671e73f5710a27d5b76dd82e219fa264edd7c897dfc3f807e7f18f3f30', 4, 1, 'viethungit', '[]', 1, '2023-10-21 09:01:35', '2023-10-21 09:01:44', '2024-10-21 16:01:35'),
 ('ba793c0ac89462268fc2aa13f8141ff556db311bfc07f1977cfd0ab5c36c8ce0fb7e8e16d43b27d1', 1, 1, 'fsdaklffjksadfkjhwi', '[]', 0, '2023-10-18 19:42:04', '2023-10-18 19:42:04', '2024-10-19 02:42:04'),
 ('bcf7bc6cd15e1d6ce68ee48badb4cbdffb8248a31157a0f866d56572cafc86afd9b1bd3b731e4134', 1, 1, 'viethungit', '[]', 0, '2023-10-13 05:51:21', '2023-10-13 05:51:21', '2024-10-13 12:51:21'),
 ('c360f1b5b42f79e07ea80260de09b928abae55ed8eb3c976de980c5481fa8d05cc1d3c1eb7781f49', 1, 1, 'fsdaklffjksadfkjhwi', '[]', 0, '2023-10-14 00:13:20', '2023-10-14 00:13:21', '2024-10-14 07:13:20'),
@@ -585,7 +616,12 @@ INSERT INTO `permissions` (`id`, `key`, `table_name`, `created_at`, `updated_at`
 (52, 'read_tests', 'tests', '2023-10-18 00:15:52', '2023-10-18 00:15:52'),
 (53, 'edit_tests', 'tests', '2023-10-18 00:15:52', '2023-10-18 00:15:52'),
 (54, 'add_tests', 'tests', '2023-10-18 00:15:52', '2023-10-18 00:15:52'),
-(55, 'delete_tests', 'tests', '2023-10-18 00:15:52', '2023-10-18 00:15:52');
+(55, 'delete_tests', 'tests', '2023-10-18 00:15:52', '2023-10-18 00:15:52'),
+(56, 'browse_classrooms', 'classrooms', '2023-10-22 04:07:38', '2023-10-22 04:07:38'),
+(57, 'read_classrooms', 'classrooms', '2023-10-22 04:07:38', '2023-10-22 04:07:38'),
+(58, 'edit_classrooms', 'classrooms', '2023-10-22 04:07:38', '2023-10-22 04:07:38'),
+(59, 'add_classrooms', 'classrooms', '2023-10-22 04:07:38', '2023-10-22 04:07:38'),
+(60, 'delete_classrooms', 'classrooms', '2023-10-22 04:07:38', '2023-10-22 04:07:38');
 
 -- --------------------------------------------------------
 
@@ -657,7 +693,12 @@ INSERT INTO `permission_role` (`permission_id`, `role_id`) VALUES
 (52, 1),
 (53, 1),
 (54, 1),
-(55, 1);
+(55, 1),
+(56, 1),
+(57, 1),
+(58, 1),
+(59, 1),
+(60, 1);
 
 -- --------------------------------------------------------
 
@@ -686,6 +727,18 @@ INSERT INTO `personal_access_tokens` (`id`, `tokenable_type`, `tokenable_id`, `n
 (2, 'App\\Models\\User', 1, 'viethungit', 'fd93606797d4f62014a37b01eb030ac1c9ed4119c2d2dc9e8e10a4961cec54dc', '[\"*\"]', NULL, '2023-10-13 05:44:13', '2023-10-13 05:44:13'),
 (3, 'App\\Models\\User', 1, 'viethungit', '231d6a00e874407b5e3cafc1395784c1979c9083b032340e27ae686ac837b75d', '[\"*\"]', NULL, '2023-10-13 05:47:43', '2023-10-13 05:47:43'),
 (4, 'App\\Models\\User', 1, 'viethungit', '9b883d6364129f56708c4aa17db493716024c4f2d38ed7ae8912a4bc77b6b0fc', '[\"*\"]', NULL, '2023-10-13 05:48:28', '2023-10-13 05:48:28');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `pivot_classroom_user`
+--
+
+CREATE TABLE `pivot_classroom_user` (
+  `id` int(10) UNSIGNED NOT NULL,
+  `user_id` int(11) DEFAULT NULL,
+  `classroom_id` int(11) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
 
@@ -746,13 +799,39 @@ CREATE TABLE `questions` (
 --
 
 INSERT INTO `questions` (`id`, `content`, `a`, `b`, `c`, `d`, `answer`, `type`, `created_at`, `updated_at`, `test_id`) VALUES
-(1, '<p>JavaScript l&agrave; ng&ocirc;n ngữ xử l&yacute; ở:</p>', 'Client', 'Server', 'Server / Client', 'Không có dạng nào', 'c', 'abcd', '2023-10-18 19:10:23', '2023-10-18 19:10:23', 1),
-(2, '<p>Javascript l&agrave; ng&ocirc;n ngữ th&ocirc;ng dịch hay bi&ecirc;n dịch</p>', 'Thông dịch', 'Biên dịch', 'Cả hai dạng', 'Không có dạng nào ở trên', 'b', 'abcd', '2023-10-18 19:12:09', '2023-10-18 19:12:09', 1),
-(3, '<p>Phương thức viết chương tr&igrave;nh của Javascript như thế n&agrave;o?</p>', 'Viết riêng một trang', 'Viết chung với HTML', 'Cả hai dạng A và B', 'Không có dạng nào.', 'c', 'abcd', '2023-10-18 19:13:13', '2023-10-18 19:13:13', 1),
-(4, '<p>Javascript l&agrave; ng&ocirc;n ngữ kịch bản c&oacute; dấu được m&atilde; nguồn kh&ocirc;ng?</p>', 'Không dấu được vì các kịch bản chạy ở client.', 'Dấu được vì chương trình hoạt động độc lập với trình duyệt', 'Hai phát biểu đều sai.', 'Hai phát biểu đều đúng', 'a', 'abcd', '2023-10-18 19:15:10', '2023-10-18 19:15:10', 1),
-(5, '<p>JavaScript được bắt đầu bằng?</p>', '<scritp> …</script>', '<Javascript> …<Javascript>', '<java>  </java>', 'Tất cả các dạng trên.', 'a', 'abcd', '2023-10-18 19:36:48', '2023-10-18 19:36:48', 1),
-(6, '<p>Javascript c&oacute; c&aacute;c dạng biến?</p>', 'Number, String, Boolean', 'Number, Integer, char', 'Number, String, Boolean, Null', 'Tất cả các loại trên.', 'd', 'abcd', '2023-10-18 19:37:39', '2023-10-18 19:37:39', 1),
-(7, '<p>Trong Javascript hàm parseInt() dùng để làm gì?</p>', 'Chuyển một chuỗi thành số', 'Chuyển một chuỗi thành số nguyên', 'Chuyển một chuỗi thành số thực', 'Chuyển một số nguyên thành một chuỗi', 'b', 'abcd', '2023-10-18 19:40:30', '2023-10-18 19:40:30', 1);
+(10, '<p>Trong Javascript đoạn mã sau cho ra kết quả gì?</p>\r\n<pre class=\"language-markup\"><code>&lt;!DOCTYPE html&gt;\r\n&lt;html lang=\"en\"&gt;\r\n&lt;head&gt;\r\n  &lt;meta charset=\"UTF-8\"&gt;\r\n  &lt;meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\"&gt;\r\n  &lt;title&gt;Document&lt;/title&gt;\r\n  &lt;script&gt;\r\n    function kiemtra() {\r\n      window.open(\"http://www.vnn.vn\", \"Chao\");\r\n    } \r\n  &lt;/script&gt;\r\n&lt;/head&gt;\r\n\r\n&lt;body onload=\"kiemtra()\"&gt;\r\n&lt;/body&gt;\r\n&lt;/html&gt;</code></pre>', 'Khi chạy thì một trang khác (VNN) được hiện ra .', 'Không chạy được vì sai', 'Khi kết thúc thì một site khác hiện ra', 'Hiện một trang vnn duy nhất.', 'a', 'abcd', '2023-10-22 04:55:34', '2023-10-22 04:55:34', 1),
+(11, '<p>Thẻ &lt;input type=”text” …&gt; dùng để làm gì?</p>', 'Tạo một ô text để nhập dữ liệu', 'Tạo một ô password', 'Tạo một cùng có nhiều cột nhiều dòng', 'Tất cả các ý trên', 'a', 'abcd', '2023-10-22 05:05:58', '2023-10-22 05:05:58', 1),
+(12, '<p>Thẻ &lt;input type=”Password” …&gt; dùng để làm gì?</p>', 'Tạo một ô text để nhập dữ liệu', 'Tạo một ô password', 'Tạo một cùng có nhiều cột nhiều dòng', 'Tất cả các ý trên', 'b', 'abcd', '2023-10-22 05:09:30', '2023-10-22 05:09:30', 1),
+(13, '<p>Thẻ &lt;textarea rows= cols = …&gt;&lt;/texterea&gt; dùng để làm gì?</p>', 'Tạo một ô text để nhập dữ liệu', 'Tạo một ô password', 'Tạo một cùng có nhiều cột nhiều dòng', 'Tất cả các ý trên', 'c', 'abcd', '2023-10-22 05:10:04', '2023-10-22 05:10:04', 1),
+(14, '<p>Thẻ &lt;input type=”Submit” …&gt; dùng để làm gì?</p>', 'Tạo một ô text để nhập dữ liệu', 'Tạo một nút lệnh dùng để gửi tin trong form đi', 'Tạo một cùng có nhiều cột nhiều dòng', 'Tất cả các ý trên', 'b', 'abcd', '2023-10-22 05:14:49', '2023-10-22 05:14:49', 1),
+(15, '<p>Thẻ &lt;input type=”Radio” …&gt; dùng để làm gì?</p>', 'Tạo một ô text để nhập dữ liệu', 'Tạo một nhóm đối tượng chọn nhưng chọn duy nhất', 'Tạo một cùng có nhiều cột nhiều dòng', 'Tất cả các ý trên', 'b', 'abcd', '2023-10-22 05:16:32', '2023-10-22 05:16:32', 1),
+(16, '<p>Thẻ &lt;input type=”checkbox” …&gt; dùng để làm gì?</p>', 'Tạo một ô text để nhập dữ liệu', 'Tạo một nhóm đối tượng chọn được nhiều đối tượng', 'Tạo một cùng có nhiều cột nhiều dòng', 'Tất cả các ý trên', 'b', 'abcd', '2023-10-22 05:17:14', '2023-10-22 05:17:14', 1),
+(17, '<p>Thẻ &lt;input type=”button” …&gt; dùng để làm gì?</p>', 'Tạo một ô text để nhập dữ liệu', 'Tạo một nút lệnh lên trên form', 'Tạo một cùng có nhiều cột nhiều dòng', 'Tất cả các ý trên', 'b', 'abcd', '2023-10-22 05:17:48', '2023-10-22 05:17:48', 1),
+(18, '<p>Câu lệnh nào đúng thực hiện việc gọi một script từ bên ngoài có tên là xxx.js?</p>', '<script src=\"xxx.js\"></script>', '<script name=\"xxx.js\"></script>', '<script href=\"xxx.js\"></script>', '<script to=\"xxx.js\"></script>', 'a', 'abcd', '2023-10-22 05:19:46', '2023-10-22 05:19:46', 1),
+(19, '<p>Cấu trúc đơn giản của một trang HTML được khai báo theo thứ tự là:</p>\r\n<div style=\"all: initial;\" class=\"notranslate\"></div>', 'HEAD, HTML, BODY', 'HEAD, TITLE, BODY', 'HEAD, BODY, HTML', 'HTML, HEAD, BODY', 'd', 'abcd', '2023-10-22 05:22:47', '2023-10-22 05:22:47', 1),
+(20, '<p>Để trình bày một đoạn văn bản trong tài liệu HTML ta dùng thẻ:</p>', '<HR>', '<P>', '<BR>', '<PRE>', 'b', 'abcd', '2023-10-22 05:23:19', '2023-10-22 05:23:19', 1),
+(21, '<p>Để khai báo một phần bị đánh dấu trên trang web ta sử dụng thẻ &lt;A&gt; với thuộc tính:</p>', 'NAME', 'CLASS', 'HREF', 'ID', 'a', 'abcd', '2023-10-22 05:24:04', '2023-10-22 05:24:04', 1),
+(22, '<p>Để chèn hình ảnh vào trang web ta dùng thẻ</p>', '<PIC>', '<IMG>', '<IMAGE>', '<PICTURE>', 'b', 'abcd', '2023-10-22 05:24:34', '2023-10-22 05:24:34', 1),
+(23, '<p>Để nhóm các thành phần có liên quan với nhau ta dùng thẻ:</p>', '<span>', '<pre>', '<blockquote>', '<div>', 'd', 'abcd', '2023-10-22 05:25:16', '2023-10-22 05:25:16', 1),
+(24, '<p>Để khai báo một danh sách có thứ tự ta sử dụng thẻ:</p>', '<li>', '<lo>', '<ul>', '<dl>', 'c', 'abcd', '2023-10-22 05:25:46', '2023-10-22 05:25:46', 1),
+(25, '<p>Để khai báo một bảng trên trang web ta sử dụng thẻ:</p>', '<tr>', '<td>', '<table>', '<th>', 'c', 'abcd', '2023-10-22 05:27:05', '2023-10-22 05:27:05', 1),
+(26, '<p>Để khai báo một hàng trong bảng trên trang web ta sử dụng thẻ: </p>', '<tr>', '<td>', '<table>', '<th>', 'a', 'abcd', '2023-10-22 05:27:53', '2023-10-22 05:27:53', 1),
+(27, '<p>Thứ tự xép tầng của css theo độ ưu tiên từ thấp đến cao như sau:</p>', 'External style sheet, internal style sheet, browser default, inline style', 'Inline style, browser default, external style sheet, internal style sheet', 'Browser default, internal style sheet, inline style, external style sheet', 'Browser default, external style sheet, internal style sheet, inline style', 'd', 'abcd', '2023-10-22 05:29:34', '2023-10-22 05:29:34', 1),
+(28, '<p>Đâu là tag tạo ra liên kết (links) trong web</p>', '<a url=\"http://www.w3schools.com\">w3schools.com</a>', '<a>http://www.w3schools.com</a>', '<a href=\"http://www.w3schools.com\">w3schools</a>', '<a name=\"http://www.w3schools.com\">w3schools.com</a>', 'c', 'abcd', '2023-10-22 05:31:10', '2023-10-22 05:31:10', 1),
+(29, '<p>Đâu là tag tạo ra liên kết đến email?</p>', '<a href=\"xxx@yyy\">', '<a href=\"mailto:xxx@yyy\">', '<mail>xxx@yyy</mail>', '<mail href=\"xxx@yyy\">', 'b', 'abcd', '2023-10-22 05:32:17', '2023-10-22 05:32:17', 1),
+(30, '<p>Làm sao để khi click chuột vào link thì tạo ra cửa sổ mới?</p>', '<a href=\"url\" new>', '<a href=\"url\" target=\"new\">', '<a href=\"url\" target=\"_blank\">', '<a href=\"url\" target=\"blank\">', 'c', 'abcd', '2023-10-22 05:32:53', '2023-10-22 05:32:53', 1),
+(31, '<p>Tag nào tạo ra 1 checkbox?</p>', '<check>', '<input type=\"check\">', '<checkbox>', '<input type=\"checkbox\">', 'd', 'abcd', '2023-10-22 05:34:37', '2023-10-22 05:34:37', 1),
+(32, '<p>Tag nào tạo ra 1 drop-down list?</p>', '<select>', '<select>', '<input type=\"dropdown\">', '<input type=\"list\">', 'a', 'abcd', '2023-10-22 05:35:05', '2023-10-22 05:35:05', 1),
+(33, '<p>Tag nào dùng để chèn 1 hình vào web?</p>', '<image src=\"image.gif\">', '<img>image.gif</img>', '<img src=\"image.gif\">', '<img href=\"image.gif>', 'b', 'abcd', '2023-10-22 05:35:36', '2023-10-22 05:35:36', 1),
+(34, '<p>Dòng nào tuân theo đúng cú pháp của css?</p>', 'body {color: black}', '{body;color:black}', 'Body:color=black', '{body:color=black(body}', 'a', 'abcd', '2023-10-22 05:36:13', '2023-10-22 05:36:13', 1),
+(35, '<p>Dòng nào thể hiện đúng một comment (lời chú thích) trong css?</p>', '/* this is a comment */', '// this is a comment //', '‘ this is a comment', '// this is a comment', 'a', 'abcd', '2023-10-22 05:37:05', '2023-10-22 05:37:05', 1),
+(36, '<p>Làm thế nào thay màu nền của chữ (text)?</p>', 'Text-color=', 'Fgcolor:', 'Color:', 'Text-color:', 'c', 'abcd', '2023-10-22 05:38:01', '2023-10-22 05:38:01', 1),
+(37, '<p>Thuộc tính nào thay đổi kích cỡ chữ?</p>', 'Font-style', 'Font-size', 'Text-style', 'ext-size', 'b', 'abcd', '2023-10-22 08:12:35', '2023-10-22 08:12:35', 1),
+(38, '<p>Thuộc tính nào làm chữ trong tag p trở thành chữ đậm?</p>', '{text-size:bold}', '<p style=”font-size:bold”>', '<p style=”text-size:bold”>', 'P {font-weight:bold}', 'd', 'abcd', '2023-10-22 08:13:14', '2023-10-22 08:13:14', 1),
+(39, '<p>Làm sao để hiển thị liên kết mà ko có gạch chân bên dưới?</p>', 'A {decoration:no underline}', 'A {text-decoration:no underline}', 'A {underline:none}', 'A {text-decoration:none}', 'd', 'abcd', '2023-10-22 08:13:54', '2023-10-22 08:13:54', 1),
+(40, '<p>Làm sao để mỗi từ trong 1 dòng đều viết hoa ở đầu từ?</p>', 'Text-transform:capitalize', 'Text-transform: ilatic', 'Text-transform:uppercase', 'Không thể sử dụng bằng css', 'a', 'abcd', '2023-10-22 08:14:53', '2023-10-22 08:14:53', 1),
+(41, '<p>Làm sao để tạo chữ đậm?</p>', 'Font-weight:bold', 'Style:bold', 'Font:b', 'Tất cả các câu trên đều đúng', 'a', 'abcd', '2023-10-22 08:15:27', '2023-10-22 08:15:27', 1),
+(42, '<p>Xét đoạn lệnh sau. Trong đoạn lệnh trên ‘test’ được gọi là</p>\r\n<pre class=\"language-markup\"><code>&lt;style type=\"text/css\"&gt;\r\n\r\n   #test {color:limegreen;font-family:fantasy;font-size:x-large}\r\n\r\n   .abc {color:limegreen;font-family:arial;font-size:x-large} h1 {color:red;font-family:arial;font-size:x-large}\r\n\r\n&lt;/style&gt;</code></pre>', 'Class selector', 'Tag selector', 'Id selector', 'None of these', 'c', 'abcd', '2023-10-22 08:17:16', '2023-10-22 08:17:16', 1);
 
 -- --------------------------------------------------------
 
@@ -856,7 +935,7 @@ CREATE TABLE `tests` (
 --
 
 INSERT INTO `tests` (`id`, `subject_id`, `title`, `description`, `time`, `number`, `created_at`, `updated_at`, `code`, `question_number`) VALUES
-(1, 3, 'Kiểm tra kết quả thực tập team IT', NULL, 60, 0, '2023-10-18 00:18:00', '2023-10-20 01:41:56', 'N3hhvf', 50);
+(1, 3, 'Kiểm tra kết quả thực tập team IT', NULL, 60, 2, '2023-10-18 00:18:00', '2023-10-22 03:58:03', 'N3hhvf', 50);
 
 -- --------------------------------------------------------
 
@@ -882,7 +961,8 @@ CREATE TABLE `test_histories` (
 --
 
 INSERT INTO `test_histories` (`id`, `user_id`, `test_id`, `correct`, `wrong`, `time`, `answers`, `created_at`, `updated_at`, `point`) VALUES
-(1, 1, 1, 1, 6, 1159, '[{\"questionId\":1,\"value\":\"c\"},{\"questionId\":6,\"value\":null},{\"questionId\":4,\"value\":null},{\"questionId\":5,\"value\":null},{\"questionId\":2,\"value\":null},{\"questionId\":7,\"value\":null},{\"questionId\":3,\"value\":null}]', '2023-10-21 02:03:41', '2023-10-21 02:03:41', 0.25);
+(2, 1, 1, 5, 2, 3488, '[{\"questionId\":1,\"value\":\"a\"},{\"questionId\":3,\"value\":\"c\"},{\"questionId\":6,\"value\":\"d\"},{\"questionId\":2,\"value\":\"a\"},{\"questionId\":5,\"value\":\"a\"},{\"questionId\":7,\"value\":\"b\"},{\"questionId\":4,\"value\":\"a\"}]', '2023-10-21 09:16:29', '2023-10-21 09:16:29', 7.25),
+(3, 1, 1, 7, 0, 85, '[{\"questionId\":2,\"value\":\"b\"},{\"questionId\":4,\"value\":\"a\"},{\"questionId\":1,\"value\":\"c\"},{\"questionId\":7,\"value\":\"b\"},{\"questionId\":6,\"value\":\"d\"},{\"questionId\":3,\"value\":\"c\"},{\"questionId\":5,\"value\":\"a\"}]', '2023-10-22 03:58:03', '2023-10-22 03:58:03', 10);
 
 -- --------------------------------------------------------
 
@@ -972,7 +1052,18 @@ INSERT INTO `translations` (`id`, `table_name`, `column_name`, `foreign_key`, `l
 (64, 'data_types', 'display_name_singular', 7, 'en', 'Subject', '2023-10-18 18:24:22', '2023-10-18 18:24:22'),
 (65, 'data_types', 'display_name_plural', 7, 'en', 'Subjects', '2023-10-18 18:24:22', '2023-10-18 18:24:22'),
 (66, 'data_rows', 'display_name', 84, 'en', 'Code', '2023-10-20 01:04:25', '2023-10-20 01:04:25'),
-(67, 'data_rows', 'display_name', 85, 'en', 'Số lượng câu hỏi', '2023-10-20 01:04:25', '2023-10-20 01:04:25');
+(67, 'data_rows', 'display_name', 85, 'en', 'Số lượng câu hỏi', '2023-10-20 01:04:25', '2023-10-20 01:04:25'),
+(68, 'data_rows', 'display_name', 86, 'en', 'Id', '2023-10-22 04:09:02', '2023-10-22 04:09:02'),
+(69, 'data_rows', 'display_name', 87, 'en', 'Tên lớp', '2023-10-22 04:09:02', '2023-10-22 04:09:02'),
+(70, 'data_rows', 'display_name', 88, 'en', 'User Id', '2023-10-22 04:09:02', '2023-10-22 04:09:02'),
+(71, 'data_rows', 'display_name', 89, 'en', 'mã lớp', '2023-10-22 04:09:02', '2023-10-22 04:09:02'),
+(72, 'data_rows', 'display_name', 90, 'en', 'Created At', '2023-10-22 04:09:02', '2023-10-22 04:09:02'),
+(73, 'data_rows', 'display_name', 91, 'en', 'Updated At', '2023-10-22 04:09:02', '2023-10-22 04:09:02'),
+(74, 'data_rows', 'display_name', 92, 'en', 'users', '2023-10-22 04:09:02', '2023-10-22 04:09:02'),
+(75, 'data_types', 'display_name_singular', 10, 'en', 'Lớp', '2023-10-22 04:09:02', '2023-10-22 04:09:02'),
+(76, 'data_types', 'display_name_plural', 10, 'en', 'Lớp', '2023-10-22 04:09:02', '2023-10-22 04:09:02'),
+(77, 'data_rows', 'display_name', 93, 'en', 'users', '2023-10-22 04:10:42', '2023-10-22 04:10:42'),
+(78, 'data_rows', 'display_name', 82, 'en', 'Nội dung', '2023-10-22 04:52:42', '2023-10-22 04:52:42');
 
 -- --------------------------------------------------------
 
@@ -1030,6 +1121,12 @@ ALTER TABLE `categories`
   ADD PRIMARY KEY (`id`),
   ADD UNIQUE KEY `categories_slug_unique` (`slug`),
   ADD KEY `categories_parent_id_foreign` (`parent_id`);
+
+--
+-- Indexes for table `classrooms`
+--
+ALTER TABLE `classrooms`
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `data_rows`
@@ -1144,6 +1241,12 @@ ALTER TABLE `personal_access_tokens`
   ADD KEY `personal_access_tokens_tokenable_type_tokenable_id_index` (`tokenable_type`,`tokenable_id`);
 
 --
+-- Indexes for table `pivot_classroom_user`
+--
+ALTER TABLE `pivot_classroom_user`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `posts`
 --
 ALTER TABLE `posts`
@@ -1228,16 +1331,22 @@ ALTER TABLE `categories`
   MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
+-- AUTO_INCREMENT for table `classrooms`
+--
+ALTER TABLE `classrooms`
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+
+--
 -- AUTO_INCREMENT for table `data_rows`
 --
 ALTER TABLE `data_rows`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=86;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=94;
 
 --
 -- AUTO_INCREMENT for table `data_types`
 --
 ALTER TABLE `data_types`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT for table `failed_jobs`
@@ -1255,7 +1364,7 @@ ALTER TABLE `menus`
 -- AUTO_INCREMENT for table `menu_items`
 --
 ALTER TABLE `menu_items`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 
 --
 -- AUTO_INCREMENT for table `migrations`
@@ -1285,13 +1394,19 @@ ALTER TABLE `pages`
 -- AUTO_INCREMENT for table `permissions`
 --
 ALTER TABLE `permissions`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=56;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=61;
 
 --
 -- AUTO_INCREMENT for table `personal_access_tokens`
 --
 ALTER TABLE `personal_access_tokens`
   MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
+--
+-- AUTO_INCREMENT for table `pivot_classroom_user`
+--
+ALTER TABLE `pivot_classroom_user`
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `posts`
@@ -1303,7 +1418,7 @@ ALTER TABLE `posts`
 -- AUTO_INCREMENT for table `questions`
 --
 ALTER TABLE `questions`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=43;
 
 --
 -- AUTO_INCREMENT for table `roles`
@@ -1333,19 +1448,19 @@ ALTER TABLE `tests`
 -- AUTO_INCREMENT for table `test_histories`
 --
 ALTER TABLE `test_histories`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `translations`
 --
 ALTER TABLE `translations`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=68;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=79;
 
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- Constraints for dumped tables
