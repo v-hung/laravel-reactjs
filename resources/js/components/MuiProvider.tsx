@@ -57,7 +57,7 @@ const MuiProvider: React.FC<{
     <StyledEngineProvider injectFirst>
       <ThemeProvider theme={lightTheme}>
         <CssBaseline />
-        <SnackbarProvider maxSnack={3} autoHideDuration={2000} anchorOrigin={{
+        <SnackbarProvider maxSnack={3} autoHideDuration={1500} anchorOrigin={{
           vertical: 'top',
           horizontal: 'right',
         }}>

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: Oct 22, 2023 at 03:50 PM
+-- Generation Time: Oct 23, 2023 at 10:50 AM
 -- Server version: 11.3.0-MariaDB-log
 -- PHP Version: 8.0.30
 
@@ -831,7 +831,34 @@ INSERT INTO `questions` (`id`, `content`, `a`, `b`, `c`, `d`, `answer`, `type`, 
 (39, '<p>Làm sao để hiển thị liên kết mà ko có gạch chân bên dưới?</p>', 'A {decoration:no underline}', 'A {text-decoration:no underline}', 'A {underline:none}', 'A {text-decoration:none}', 'd', 'abcd', '2023-10-22 08:13:54', '2023-10-22 08:13:54', 1),
 (40, '<p>Làm sao để mỗi từ trong 1 dòng đều viết hoa ở đầu từ?</p>', 'Text-transform:capitalize', 'Text-transform: ilatic', 'Text-transform:uppercase', 'Không thể sử dụng bằng css', 'a', 'abcd', '2023-10-22 08:14:53', '2023-10-22 08:14:53', 1),
 (41, '<p>Làm sao để tạo chữ đậm?</p>', 'Font-weight:bold', 'Style:bold', 'Font:b', 'Tất cả các câu trên đều đúng', 'a', 'abcd', '2023-10-22 08:15:27', '2023-10-22 08:15:27', 1),
-(42, '<p>Xét đoạn lệnh sau. Trong đoạn lệnh trên ‘test’ được gọi là</p>\r\n<pre class=\"language-markup\"><code>&lt;style type=\"text/css\"&gt;\r\n\r\n   #test {color:limegreen;font-family:fantasy;font-size:x-large}\r\n\r\n   .abc {color:limegreen;font-family:arial;font-size:x-large} h1 {color:red;font-family:arial;font-size:x-large}\r\n\r\n&lt;/style&gt;</code></pre>', 'Class selector', 'Tag selector', 'Id selector', 'None of these', 'c', 'abcd', '2023-10-22 08:17:16', '2023-10-22 08:17:16', 1);
+(42, '<p>Xét đoạn lệnh sau. Trong đoạn lệnh trên ‘test’ được gọi là</p>\r\n<pre class=\"language-markup\"><code>&lt;style type=\"text/css\"&gt;\r\n\r\n   #test {color:limegreen;font-family:fantasy;font-size:x-large}\r\n\r\n   .abc {color:limegreen;font-family:arial;font-size:x-large} h1 {color:red;font-family:arial;font-size:x-large}\r\n\r\n&lt;/style&gt;</code></pre>', 'Class selector', 'Tag selector', 'Id selector', 'None of these', 'c', 'abcd', '2023-10-22 08:17:16', '2023-10-22 08:17:16', 1),
+(43, '<p>Thuộc tính z-index dùng để</p>\r\n<div style=\"all: initial;\" class=\"notranslate\"></div>', 'Định vị tương đối cho một thành phần', 'Quy định kiểu viền của một đối tượng web', 'Tạo hiệu ứng màu sắc cho liên lết', 'Đặt các thành phần web ở các lớp khác nhau', 'd', 'abcd', '2023-10-23 03:16:05', '2023-10-23 03:16:05', 1),
+(44, '<p> text-transform: uppercase dùng để định dạng cho thành phần hiệu ứng</p>', 'In hoa', 'In hoa kí tự đầu tiên ở mỗi từ', 'In thường', 'Không áp dụng hiệu ứng nào cả', 'a', 'abcd', '2023-10-23 03:16:36', '2023-10-23 03:16:36', 1),
+(45, '<p>Làm thế nào để bo tròn góc cạnh các phần tử?</p>', 'border[round]: 30px;', 'corner-effect: round;', 'border-radius: 30px;', 'alpha-effect: round-corner;', 'c', 'abcd', '2023-10-23 03:17:14', '2023-10-23 03:17:14', 1),
+(46, '<p>Làm thế nào để thêm bóng (shadow) cho các phần tử trong CSS3?</p>', 'box-shadow: 10px 10px 5px grey;', 'shadow-right: 10px shadow-bottom: 10px;', 'shadow-color: grey;', 'alpha-effect[shadow]: 10px 10px 5px grey;', 'a', 'abcd', '2023-10-23 03:17:40', '2023-10-23 03:17:40', 1),
+(47, '<p>Làm thế nào để xoay phần tử trong CSS3?</p>', 'object-rotation: 30deg;', 'transform: rotate(30deg);', 'rotate-object: 30deg;', 'transform: rotate-30deg-clockwise;', 'b', 'abcd', '2023-10-23 03:18:19', '2023-10-23 03:18:19', 1),
+(48, '<p>Đâu là cách để chuyển đổi kích thước/tỷ lệ phần tử bằng CSS3?</p>', 'transform: scale(2,4);', 'scale-object: 2,4;', 'scale: (2,4);', 'None', 'a', 'abcd', '2023-10-23 03:18:48', '2023-10-23 03:18:48', 1),
+(49, '<p>4 giá trị của border-radius lần lượt là?</p>', 'top, bottom, left, right', 'up, down, front, behind', 'top-left, top-right, bottom-right, bottom-left', 'bottom-left, bottom-right, top-right, top-left', 'c', 'abcd', '2023-10-23 03:20:01', '2023-10-23 03:20:01', 1),
+(50, '<p>Xem đoạn mã sau. Thẻ P sẽ có định dạng lại như thế nào?</p>\r\n<pre class=\"language-css\"><code>p { \r\n    color:red;\r\n   text-align:center;\r\n}</code></pre>', 'Thẻ P của HTML sẽ có màu đỏ căn lề giữa.', 'Thẻ P của HTML sẽ có màu đỏ căn lề trái.', 'Thẻ P của HTML sẽ có màu đỏ căn lề phải.', 'Thẻ P của HTML sẽ không thay đổi vì nó đã được định nghĩa của HTML', 'a', 'abcd', '2023-10-23 03:22:00', '2023-10-23 03:22:00', 1),
+(51, '<p>Kết quả đoạn code sau là gì?</p>\r\n<pre class=\"language-javascript\"><code>&lt;?php\r\n$x = array(\r\n    1,\r\n    3,\r\n    2,\r\n    3,\r\n    7,\r\n    8,\r\n    9,\r\n    7,\r\n    3\r\n);\r\n$y = array_count_values($x);\r\necho $y[8];\r\n?&gt;</code></pre>', '43', '1', '8', '6', 'b', 'abcd', '2023-10-23 03:25:00', '2023-10-23 03:26:33', 1),
+(52, '<p>Khi thực thi biến này </p>\r\n<pre class=\"language-javascript\"><code>$var3 = $var1 % $var2</code></pre>\r\n<p>dạng type của nó là</p>', 'double', 'integer', 'string', 'boolean', 'b', 'abcd', '2023-10-23 03:28:04', '2023-10-23 03:28:04', 1),
+(53, '<p>Dạng type nào sẽ được tự động dịch khi gán biến này $var = 50.0</p>', 'double', 'integer', 'string', 'boolean', 'a', 'abcd', '2023-10-23 03:28:38', '2023-10-23 03:28:38', 1),
+(54, '<p>Câu lệnh nào là đúng , khi bạn muốn biến đổi dang (type) thành integer?</p>', '$item = (int) \"100Laptop\";', '$tem = \"int\"\"100Laptop\";', '$item = [int] \"100Laptop\";', '$item = INT\"100Laptop\";', 'a', 'abcd', '2023-10-23 03:29:19', '2023-10-23 03:29:19', 1),
+(55, '<p>PHP không hổ trợ dạng type nào?</p>', 'Integer', 'String', 'Single', 'Double', 'c', 'abcd', '2023-10-23 03:30:02', '2023-10-23 03:30:02', 1),
+(56, '<p>Để in ra \"Hello World\" trong PHP</p>', '\"Hello World\";', 'Document.Write(\"Hello World\");', 'echo \"Hello World\";', 'Cả A, B, C đều đúng', 'c', 'abcd', '2023-10-23 03:32:34', '2023-10-23 03:32:34', 1),
+(57, '<p>Làm cách nào để lấy biến truyền qua server thông qua phương thức GET trong php</p>', 'Request.Form;', '$_GET[];', 'Request.QueryString;', 'Request', 'b', 'abcd', '2023-10-23 03:33:15', '2023-10-23 03:33:15', 1),
+(58, '<p>Cách nào đúng để include 1 file \"time.inc\" ?</p>', '<?php require(\"time.inc\"); ?>', '<?php include_file(\"time.inc\"); ?>', '<% include file=\"time.inc\" %>', '<!--include file=\"time.inc\"-->', 'a', 'abcd', '2023-10-23 03:34:11', '2023-10-23 03:34:11', 1),
+(59, '<p>Để +1 cho biến $count</p>', '$count =+1', '++count', 'count++;', '$count++;', 'a', 'abcd', '2023-10-23 03:34:49', '2023-10-23 03:34:49', 1),
+(60, '<p>Hàm nào để ngưng script php chạy tiếp?</p>', 'break()', 'quit()', 'die()', 'return()', 'c', 'abcd', '2023-10-23 03:35:54', '2023-10-23 03:35:54', 1),
+(61, '<p>Kết quả của script là gì?</p>\r\n<pre class=\"language-javascript\"><code>&lt;?php\r\ndefine(\"x\", \"5\");\r\n$x = x + 10;\r\necho x;\r\n?&gt;</code></pre>', 'Error', '15', '10', '5', 'd', 'abcd', '2023-10-23 03:37:30', '2023-10-23 03:37:30', 1),
+(62, '<p>Đoạn code sau đây cho ra kết quả gì?</p>\r\n<pre class=\"language-javascript\"><code>&lt;?php\r\nfunction zz(&amp;$x)\r\n{\r\n    $x = $x + 5;\r\n}\r\n\r\n$x = 10;\r\nzz($x);\r\necho $x;\r\n?&gt;</code></pre>', '5', '0', '15', '10', 'c', 'abcd', '2023-10-23 03:41:42', '2023-10-23 03:41:42', 1),
+(63, '<p>Đoạn code sau đây cho ra kết quả gì?</p>\r\n<pre class=\"language-javascript\"><code>&lt;?php\r\n$x = array(\r\n    2 =&gt; \"mouse\",\r\n    7 =&gt; \"keyboard\"\r\n);\r\n$y = array_keys($x);\r\necho $y[1];\r\n?&gt;</code></pre>', 'keyboard', 'mouse', '7', '2', 'c', 'abcd', '2023-10-23 03:42:28', '2023-10-23 03:42:28', 1),
+(64, '<p>Đoạn code sau đây cho ra kết quả gì?</p>\r\n<pre class=\"language-javascript\"><code>&lt;?php\r\n$father = \"mother\";\r\n$mother = \"son\";\r\necho $$father;\r\n?&gt;</code></pre>', 'son', 'mother', 'motherson', 'Error', 'a', 'abcd', '2023-10-23 03:43:37', '2023-10-23 03:43:37', 1),
+(65, '<p>Đoạn code sau cho ra kết quả gì?</p>\r\n<pre class=\"language-javascript\"><code>&lt;?php\r\n$arr = array(\r\n    5 =&gt; 1,\r\n    12 =&gt; 2\r\n);\r\n$arr[] = 56;\r\n$arr[\"x\"] = 42;\r\necho var_dump($arr);\r\n?&gt;</code></pre>', '42', 'array(3) { [12]=> int(2) [13]=> int(56) [\"x\"]=> int(42) }', 'array(4) { [5]=>int(1) [12]=> int(2) [13]=> int(56) [\"x\"]=> int(42) }', '1,2,56,42', 'c', 'abcd', '2023-10-23 03:44:36', '2023-10-23 03:44:36', 1),
+(66, '<p>Đoạn code sau cho ra kết quả gì?</p>\r\n<pre class=\"language-javascript\"><code>&lt;?php\r\n$date = \"2009-5-19\";\r\n$time = \"14:31:38\";\r\n$datetime = $date . $time;\r\necho date(\"Y-m-d:H:i:s\", strtotime($datetime));\r\n?&gt;</code></pre>', '2009-5-19:14:31:38', '2009-5-19:2:31:38', '19-5-2009:2:31:38', '19/5/2009:14:31:38', 'a', 'abcd', '2023-10-23 03:45:55', '2023-10-23 03:45:55', 1),
+(67, '<p>Kết quả của đoạn php dưới đây là?</p>\r\n<pre class=\"language-javascript\"><code>&lt;?php\r\n$num = 1;\r\n$num1 = 2;\r\nprint $num . \"+\" . $num1;\r\n?&gt;</code></pre>', '3', '1+2', '1.+.2', 'Xảy ra lỗi', 'b', 'abcd', '2023-10-23 03:48:16', '2023-10-23 03:48:16', 1),
+(68, '<p>Kết quả của đoạn code dưới đây là?</p>\r\n<pre class=\"language-javascript\"><code>&lt;?php\r\n$num = “1”;\r\n$num1 = “2”;\r\nprint $num + $num1;\r\n?&gt;</code></pre>', '3', '1+2', '12', 'Xảy ra lỗi', 'a', 'abcd', '2023-10-23 03:48:57', '2023-10-23 03:48:57', 1),
+(69, '<p>Kết quả của đoạn code dưới đây là?</p>\r\n<pre class=\"language-javascript\"><code>&lt;?php\r\n$color = \"maroon\";\r\n$var = $color[2];\r\necho \"$var\";\r\n?&gt;</code></pre>', 'a', 'Error', '$var', 'r', 'd', 'abcd', '2023-10-23 03:49:49', '2023-10-23 03:49:49', 1);
 
 -- --------------------------------------------------------
 
@@ -935,7 +962,7 @@ CREATE TABLE `tests` (
 --
 
 INSERT INTO `tests` (`id`, `subject_id`, `title`, `description`, `time`, `number`, `created_at`, `updated_at`, `code`, `question_number`) VALUES
-(1, 3, 'Kiểm tra kết quả thực tập team IT', NULL, 60, 2, '2023-10-18 00:18:00', '2023-10-22 03:58:03', 'N3hhvf', 50);
+(1, 3, 'Kiểm tra kết quả thực tập team IT', NULL, 60, 4, '2023-10-18 00:18:00', '2023-10-23 01:40:18', 'N3hhvf', 50);
 
 -- --------------------------------------------------------
 
@@ -962,7 +989,9 @@ CREATE TABLE `test_histories` (
 
 INSERT INTO `test_histories` (`id`, `user_id`, `test_id`, `correct`, `wrong`, `time`, `answers`, `created_at`, `updated_at`, `point`) VALUES
 (2, 1, 1, 5, 2, 3488, '[{\"questionId\":1,\"value\":\"a\"},{\"questionId\":3,\"value\":\"c\"},{\"questionId\":6,\"value\":\"d\"},{\"questionId\":2,\"value\":\"a\"},{\"questionId\":5,\"value\":\"a\"},{\"questionId\":7,\"value\":\"b\"},{\"questionId\":4,\"value\":\"a\"}]', '2023-10-21 09:16:29', '2023-10-21 09:16:29', 7.25),
-(3, 1, 1, 7, 0, 85, '[{\"questionId\":2,\"value\":\"b\"},{\"questionId\":4,\"value\":\"a\"},{\"questionId\":1,\"value\":\"c\"},{\"questionId\":7,\"value\":\"b\"},{\"questionId\":6,\"value\":\"d\"},{\"questionId\":3,\"value\":\"c\"},{\"questionId\":5,\"value\":\"a\"}]', '2023-10-22 03:58:03', '2023-10-22 03:58:03', 10);
+(3, 1, 1, 7, 0, 85, '[{\"questionId\":2,\"value\":\"b\"},{\"questionId\":4,\"value\":\"a\"},{\"questionId\":1,\"value\":\"c\"},{\"questionId\":7,\"value\":\"b\"},{\"questionId\":6,\"value\":\"d\"},{\"questionId\":3,\"value\":\"c\"},{\"questionId\":5,\"value\":\"a\"}]', '2023-10-22 03:58:03', '2023-10-22 03:58:03', 10),
+(4, 1, 1, 5, 28, 50, '[{\"questionId\":10,\"answer\":null,\"correct\":false},{\"questionId\":11,\"answer\":null,\"correct\":false},{\"questionId\":12,\"answer\":null,\"correct\":false},{\"questionId\":13,\"answer\":null,\"correct\":false},{\"questionId\":14,\"answer\":null,\"correct\":false},{\"questionId\":15,\"answer\":null,\"correct\":false},{\"questionId\":16,\"answer\":null,\"correct\":false},{\"questionId\":17,\"answer\":null,\"correct\":false},{\"questionId\":18,\"answer\":\"a\",\"correct\":true},{\"questionId\":19,\"answer\":null,\"correct\":false},{\"questionId\":20,\"answer\":null,\"correct\":false},{\"questionId\":21,\"answer\":null,\"correct\":false},{\"questionId\":22,\"answer\":null,\"correct\":false},{\"questionId\":23,\"answer\":\"d\",\"correct\":true},{\"questionId\":24,\"answer\":\"a\",\"correct\":false},{\"questionId\":25,\"answer\":null,\"correct\":false},{\"questionId\":26,\"answer\":null,\"correct\":false},{\"questionId\":27,\"answer\":\"d\",\"correct\":true},{\"questionId\":28,\"answer\":null,\"correct\":false},{\"questionId\":29,\"answer\":null,\"correct\":false},{\"questionId\":30,\"answer\":\"c\",\"correct\":true},{\"questionId\":31,\"answer\":null,\"correct\":false},{\"questionId\":32,\"answer\":null,\"correct\":false},{\"questionId\":33,\"answer\":null,\"correct\":false},{\"questionId\":34,\"answer\":null,\"correct\":false},{\"questionId\":35,\"answer\":null,\"correct\":false},{\"questionId\":36,\"answer\":\"c\",\"correct\":true},{\"questionId\":37,\"answer\":null,\"correct\":false},{\"questionId\":38,\"answer\":null,\"correct\":false},{\"questionId\":39,\"answer\":null,\"correct\":false},{\"questionId\":40,\"answer\":null,\"correct\":false},{\"questionId\":41,\"answer\":null,\"correct\":false},{\"questionId\":42,\"answer\":null,\"correct\":false}]', '2023-10-23 01:36:25', '2023-10-23 01:36:25', 1.5),
+(5, 1, 1, 2, 31, 7, '[{\"questionId\":36,\"answer\":\"c\",\"correct\":true},{\"questionId\":23,\"answer\":\"d\",\"correct\":true},{\"questionId\":28,\"answer\":null,\"correct\":false},{\"questionId\":22,\"answer\":null,\"correct\":false},{\"questionId\":15,\"answer\":null,\"correct\":false},{\"questionId\":29,\"answer\":null,\"correct\":false},{\"questionId\":13,\"answer\":null,\"correct\":false},{\"questionId\":21,\"answer\":null,\"correct\":false},{\"questionId\":18,\"answer\":null,\"correct\":false},{\"questionId\":17,\"answer\":null,\"correct\":false},{\"questionId\":11,\"answer\":null,\"correct\":false},{\"questionId\":20,\"answer\":null,\"correct\":false},{\"questionId\":39,\"answer\":null,\"correct\":false},{\"questionId\":41,\"answer\":null,\"correct\":false},{\"questionId\":19,\"answer\":null,\"correct\":false},{\"questionId\":30,\"answer\":null,\"correct\":false},{\"questionId\":35,\"answer\":null,\"correct\":false},{\"questionId\":37,\"answer\":null,\"correct\":false},{\"questionId\":38,\"answer\":null,\"correct\":false},{\"questionId\":26,\"answer\":null,\"correct\":false},{\"questionId\":42,\"answer\":null,\"correct\":false},{\"questionId\":40,\"answer\":null,\"correct\":false},{\"questionId\":10,\"answer\":null,\"correct\":false},{\"questionId\":25,\"answer\":null,\"correct\":false},{\"questionId\":27,\"answer\":null,\"correct\":false},{\"questionId\":34,\"answer\":null,\"correct\":false},{\"questionId\":31,\"answer\":null,\"correct\":false},{\"questionId\":32,\"answer\":null,\"correct\":false},{\"questionId\":33,\"answer\":null,\"correct\":false},{\"questionId\":14,\"answer\":null,\"correct\":false},{\"questionId\":16,\"answer\":null,\"correct\":false},{\"questionId\":12,\"answer\":null,\"correct\":false},{\"questionId\":24,\"answer\":null,\"correct\":false}]', '2023-10-23 01:40:18', '2023-10-23 01:40:18', 0.5);
 
 -- --------------------------------------------------------
 
@@ -1418,7 +1447,7 @@ ALTER TABLE `posts`
 -- AUTO_INCREMENT for table `questions`
 --
 ALTER TABLE `questions`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=43;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=70;
 
 --
 -- AUTO_INCREMENT for table `roles`
@@ -1448,7 +1477,7 @@ ALTER TABLE `tests`
 -- AUTO_INCREMENT for table `test_histories`
 --
 ALTER TABLE `test_histories`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `translations`

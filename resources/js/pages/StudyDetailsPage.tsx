@@ -1,6 +1,6 @@
 import { Button, Skeleton } from '@mui/material'
 import React, { useEffect, useLayoutEffect, useState } from 'react'
-import { Link, useParams } from 'react-router-dom'
+import { Link, useNavigate, useParams } from 'react-router-dom'
 import useTestStore, { TestType } from '../stores/test'
 import { formatTime, formatTimeToString } from '../lib/helper'
 
@@ -13,11 +13,12 @@ const StudyDetailsPage = () => {
     { icon: 'schedule', title: 'Thời gian làm bài', value: '60 phút' },
     { icon: 'pending_actions', title: 'Giới hạn vào thi', value: 'Không giới hạn' },
     { icon: 'help', title: 'Số lượng câu hỏi', value: '50' },
-    
+    { icon: 'library_books', title: 'Loại đề', value: 'Trắc nghiệm' },
     { icon: 'group', title: 'Số lượt làm đề ', value: '0 lượt' }
   ])
 
   const { code } = useParams()
+  const navigate = useNavigate()
   const [loading, setLoading] = useState(true)
   
   const [test, setTest] = useState<TestType | null>(null)
@@ -130,7 +131,9 @@ const StudyDetailsPage = () => {
                       </tbody>
                     </table>
                     {/* @ts-ignore */}
-                    <Button variant='contained' color='gray' fullWidth className='mt-4 shadow hover:shadow text-gray-500 font-semibold'>
+                    <Button variant='contained' color='gray' fullWidth className='mt-4 shadow hover:shadow text-gray-500 font-semibold'
+                      onClick={() => navigate(`/answer-test/${test.code}/${v.id}`)}
+                    >
                       Xem chi tiết bài làm
                       <span className="icon">navigate_next</span>
                     </Button>

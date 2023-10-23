@@ -17,25 +17,25 @@ const Question = ({
     <div id={`question-${question.id}`} className='w-full rounded-md bg-white shadow'>
       <div className='p-4'>
         <span className="font-semibold">Câu {index}. </span>
-        <div className='content' dangerouslySetInnerHTML={{ __html: question.content }}></div>
+        <div className='content mt-2' dangerouslySetInnerHTML={{ __html: question.content }}></div>
       </div>
 
       <div className="flex flex-wrap -mx-2 p-4">
         <div className="w-1/2 sm:w-1/4 px-2 mb-4">
           <span className="font-semibold">A. </span>
-          <span>{question.a}</span>
+          <span className='break-words'>{question.a}</span>
         </div>
         <div className="w-1/2 sm:w-1/4 px-2 mb-4">
           <span className="font-semibold">B. </span>
-          <span>{question.b}</span>
+          <span className='break-words'>{question.b}</span>
         </div>
         <div className="w-1/2 sm:w-1/4 px-2 mb-4">
           <span className="font-semibold">C. </span>
-          <span>{question.c}</span>
+          <span className='break-words'>{question.c}</span>
         </div>
         <div className="w-1/2 sm:w-1/4 px-2 mb-4">
           <span className="font-semibold">D. </span>
-          <span>{question.d}</span>
+          <span className='break-words'>{question.d}</span>
         </div>
       </div>
       

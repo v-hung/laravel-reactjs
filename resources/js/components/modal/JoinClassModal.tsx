@@ -18,7 +18,7 @@ const JoinClassModal = () => {
     <AnimatePresence>
       { isOpen == 'joinClass' && <motion.div 
         className="absolute w-full h-full top-0 left-0 bg-white z-50"
-        initial={{ opacity: 0, scale: .9 }}
+        initial={{ opacity: 0, scale: .8 }}
         animate={{ opacity: 1, scale: 1 }}
         exit={{ opacity: 0, scale: 1 }}
       >

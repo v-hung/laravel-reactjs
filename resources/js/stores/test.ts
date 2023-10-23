@@ -80,7 +80,7 @@ const useTestStore = create<State & Actions & Dispatch>((set, get) => ({
     if (test) {
       set(state => ({ tests: state.tests.map(v => ({
         ...v,
-        test_histories: test.id == v.id ? [...v.test_histories || [], history] : v.test_histories
+        test_histories: test.id == v.id ? [history,...v.test_histories || []] : v.test_histories
       })) }))
     }
 

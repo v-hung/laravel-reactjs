@@ -29,7 +29,7 @@ const ClassPage = () => {
           <div className="rounded-lg border bg-white overflow-hidden shadow-sm">
             <div className="px-6 py-4 bg-[#566e7a] text-white">
               <p className="truncate text-xl">Công ty cổ phần CN và TT số KennaTech</p>
-              <p className="mt-2">Nguyễn Việt Hùng</p>
+              <p className="mt-2">GV: Nguyễn Việt Hùng</p>
             </div>
             <div className="h-32 relative">
               <div className="absolute w-16 h-16 -top-8 right-4 bg-blue-200 rounded-full">

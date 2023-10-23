@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Api\AuthController;
+use App\Http\Controllers\Api\QuestionController;
 use App\Http\Controllers\Api\TestController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -31,6 +32,8 @@ Route::middleware('auth:api')->group(function () {
     Route::get('/tests', [TestController::class, 'listTest']);
     Route::get('/tests/{code}', [TestController::class, 'testDetails']);
     Route::get('/tests/{code}/questions', [TestController::class, 'testDetailsWidthQuestion']);
+
+    Route::get('/test-history/{id}/questions', [TestController::class, 'questionsOfTestHistory']);
 
     Route::post('/submit-test', [TestController::class, 'submitTest']);
 });

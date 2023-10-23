@@ -8,6 +8,7 @@ use App\Models\Test;
 use App\Models\TestHistory;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 class TestController extends Controller
 {
@@ -66,15 +67,26 @@ class TestController extends Controller
     $correct = 0;
     $wrong = 0;
 
-    foreach($questions as $question) {
-      $answer = $this->findObjectById($answers, $question->id);
+    $saveAnswers = [];
 
-      if ($answer != null && $answer['value'] == $question->answer) {
+    foreach($answers as $answer) {
+      $question = $this->findObjectById($questions, $answer['questionId']);
+
+      $saveTemp = [
+        "questionId" => $question->id,
+        "answer" => $answer['value'] ?? null,
+        "correct" => false
+      ];
+
+      if ($question != null && $answer['value'] == $question->answer) {
         $correct += 1;
+        $saveTemp['correct'] = true;
       }
       else {
         $wrong += 1;
       }
+
+      $saveAnswers[] = $saveTemp;
     }
 
     $test->number = $test->number + 1;
@@ -86,7 +98,7 @@ class TestController extends Controller
       'correct' => $correct,
       'wrong'   => $wrong,
       'time'    => $time,
-      'answers' => json_encode($answers),
+      'answers' => json_encode($saveAnswers),
       'point'   => round($correct / ($correct + $wrong) * 40) / 4
     ]);
 
@@ -97,11 +109,31 @@ class TestController extends Controller
 
   function findObjectById($array, $id){
     foreach ( $array as $element ) {
-      if ( $id == $element['questionId'] ) {
+      if ( $id == $element->id ) {
         return $element;
       }
     }
 
     return null;
+  }
+
+  function questionsOfTestHistory(Request $request, $id) {
+    $testHistory = TestHistory::find($id);
+
+    if ($testHistory == null) return response()->json(["message" => "Test history not found"], 400);
+
+    $answers = json_decode($testHistory->answers);
+    
+    $idArray = array_map(function($item) {
+      return $item->questionId;
+    }, $answers);
+  
+    $questions = Question::where('test_id', $testHistory->test_id)
+      ->orderByRaw(DB::raw("FIELD(id, " . implode(',', $idArray) . ")"))
+      ->whereIn('id', $idArray)->get();
+
+    return response()->json([
+      'questions' => $questions
+    ], 200);
   }
 }

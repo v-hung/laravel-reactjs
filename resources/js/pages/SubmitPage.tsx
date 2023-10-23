@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import Container from "../components/layouts/Container";
-import { useParams } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import useTestStore, { TestHistoryType, TestType } from "../stores/test";
 import useUserStore from "../stores/user";
 import { formatTimeToString } from "../lib/helper";
@@ -8,6 +8,8 @@ import { Button } from "@mui/material";
 
 const SubmitPage = () => {
   const { code, id }: any  = useParams()
+  const navigate = useNavigate()
+
   const [loading, setLoading] = useState(true)
   const { findHistory } = useTestStore()
 
@@ -85,7 +87,9 @@ const SubmitPage = () => {
                 </tbody>
               </table>
 
-              <Button variant="outlined" className="w-full mt-4" endIcon={<span className="icon">chevron_right</span>}>Xem đáp án</Button>
+              <Button variant="outlined" className="w-full mt-4" endIcon={<span className="icon">chevron_right</span>}
+                onClick={() => navigate(`/answer-test/${test.code}/${history.id}`, { replace: true })}
+              >Xem đáp án</Button>
             </div>
           </>
       }

@@ -13,6 +13,7 @@ const StudyDetailsPage = lazy(() => import("./pages/StudyDetailsPage"))
 const TestPage = lazy(() => import("./pages/TestPage"))
 const SubmitPage = lazy(() => import("./pages/SubmitPage"))
 const ClassPage = lazy(() => import("./pages/ClassPage"))
+const AnswerTestPage = lazy(() => import("./pages/AnswerTestPage"))
 
 const Loading = () => (<div className="text-sm p-2 text-center">Đang tải ...</div>)
 
@@ -52,6 +53,12 @@ const router = createBrowserRouter([
                 path: '/submit-test/:code/:id',
                 element: <Suspense fallback={<Loading />}>
                   <SubmitPage />
+                </Suspense>
+              },
+              {
+                path: '/answer-test/:code/:id',
+                element: <Suspense fallback={<Loading />}>
+                  <AnswerTestPage />
                 </Suspense>
               },
               {
