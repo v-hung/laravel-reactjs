@@ -1,14 +1,214 @@
 {
+  "_Button-dbb12d56.js": {
+    "file": "assets/Button-dbb12d56.js",
+    "imports": [
+      "resources/js/main.tsx"
+    ]
+  },
+  "_Container-588b9fa7.js": {
+    "file": "assets/Container-588b9fa7.js",
+    "imports": [
+      "resources/js/main.tsx"
+    ]
+  },
+  "_IconButton-6b9ba51e.js": {
+    "file": "assets/IconButton-6b9ba51e.js",
+    "imports": [
+      "resources/js/main.tsx",
+      "_Button-dbb12d56.js"
+    ]
+  },
+  "_InputAdornment-1c3242d7.js": {
+    "file": "assets/InputAdornment-1c3242d7.js",
+    "imports": [
+      "resources/js/main.tsx",
+      "_TextField-09a07e57.js",
+      "_extendSxProp-02d77161.js"
+    ]
+  },
+  "_Skeleton-0472c68a.js": {
+    "file": "assets/Skeleton-0472c68a.js",
+    "imports": [
+      "resources/js/main.tsx"
+    ]
+  },
+  "_TextField-09a07e57.js": {
+    "file": "assets/TextField-09a07e57.js",
+    "imports": [
+      "resources/js/main.tsx"
+    ]
+  },
+  "_extendSxProp-02d77161.js": {
+    "file": "assets/extendSxProp-02d77161.js",
+    "imports": [
+      "resources/js/main.tsx"
+    ]
+  },
+  "_modal-a5743ae9.js": {
+    "file": "assets/modal-a5743ae9.js",
+    "imports": [
+      "resources/js/main.tsx"
+    ]
+  },
+  "_prism.min-7ec26ca3.js": {
+    "css": [
+      "assets/prism-9b99a5fe.css"
+    ],
+    "file": "assets/prism.min-7ec26ca3.js",
+    "imports": [
+      "resources/js/main.tsx"
+    ]
+  },
+  "_test-2110aa97.js": {
+    "file": "assets/test-2110aa97.js",
+    "imports": [
+      "resources/js/main.tsx"
+    ]
+  },
+  "prism.css": {
+    "file": "assets/prism-9b99a5fe.css",
+    "src": "prism.css"
+  },
+  "resources/js/components/modal/JoinClassModal.tsx": {
+    "file": "assets/JoinClassModal-82877353.js",
+    "imports": [
+      "resources/js/main.tsx",
+      "_modal-a5743ae9.js",
+      "_IconButton-6b9ba51e.js",
+      "_Button-dbb12d56.js",
+      "_TextField-09a07e57.js"
+    ],
+    "isDynamicEntry": true,
+    "src": "resources/js/components/modal/JoinClassModal.tsx"
+  },
   "resources/js/main.css": {
-    "file": "assets/main-df3ce941.css",
+    "file": "assets/main-c5f64954.css",
     "src": "resources/js/main.css"
   },
   "resources/js/main.tsx": {
     "css": [
-      "assets/main-df3ce941.css"
+      "assets/main-c5f64954.css"
     ],
-    "file": "assets/main-0c5164de.js",
+    "dynamicImports": [
+      "resources/js/components/modal/JoinClassModal.tsx",
+      "resources/js/pages/LoginPage.tsx",
+      "resources/js/pages/RegisterPage.tsx",
+      "resources/js/pages/StudyPage.tsx",
+      "resources/js/pages/StudyDetailsPage.tsx",
+      "resources/js/pages/TestPage.tsx",
+      "resources/js/pages/SubmitPage.tsx",
+      "resources/js/pages/ClassPage.tsx",
+      "resources/js/pages/AnswerTestPage.tsx"
+    ],
+    "file": "assets/main-ea3bcec7.js",
     "isEntry": true,
     "src": "resources/js/main.tsx"
+  },
+  "resources/js/pages/AnswerTestPage.tsx": {
+    "file": "assets/AnswerTestPage-744ae342.js",
+    "imports": [
+      "resources/js/main.tsx",
+      "_test-2110aa97.js",
+      "_prism.min-7ec26ca3.js"
+    ],
+    "isDynamicEntry": true,
+    "src": "resources/js/pages/AnswerTestPage.tsx"
+  },
+  "resources/js/pages/ClassPage.tsx": {
+    "file": "assets/ClassPage-bcd4d245.js",
+    "imports": [
+      "resources/js/main.tsx",
+      "_Container-588b9fa7.js",
+      "_modal-a5743ae9.js",
+      "_TextField-09a07e57.js",
+      "_InputAdornment-1c3242d7.js",
+      "_Button-dbb12d56.js",
+      "_IconButton-6b9ba51e.js",
+      "_extendSxProp-02d77161.js"
+    ],
+    "isDynamicEntry": true,
+    "src": "resources/js/pages/ClassPage.tsx"
+  },
+  "resources/js/pages/LoginPage.tsx": {
+    "file": "assets/LoginPage-2a31abc4.js",
+    "imports": [
+      "resources/js/main.tsx",
+      "_TextField-09a07e57.js",
+      "_InputAdornment-1c3242d7.js",
+      "_Button-dbb12d56.js",
+      "_extendSxProp-02d77161.js"
+    ],
+    "isDynamicEntry": true,
+    "src": "resources/js/pages/LoginPage.tsx"
+  },
+  "resources/js/pages/RegisterPage.tsx": {
+    "file": "assets/RegisterPage-b0a9cb01.js",
+    "imports": [
+      "resources/js/main.tsx",
+      "_TextField-09a07e57.js",
+      "_InputAdornment-1c3242d7.js",
+      "_Button-dbb12d56.js",
+      "_extendSxProp-02d77161.js"
+    ],
+    "isDynamicEntry": true,
+    "src": "resources/js/pages/RegisterPage.tsx"
+  },
+  "resources/js/pages/StudyDetailsPage.tsx": {
+    "file": "assets/StudyDetailsPage-543703a3.js",
+    "imports": [
+      "resources/js/main.tsx",
+      "_test-2110aa97.js",
+      "_Skeleton-0472c68a.js",
+      "_Button-dbb12d56.js"
+    ],
+    "isDynamicEntry": true,
+    "src": "resources/js/pages/StudyDetailsPage.tsx"
+  },
+  "resources/js/pages/StudyPage.tsx": {
+    "file": "assets/StudyPage-3c3ac389.js",
+    "imports": [
+      "resources/js/main.tsx",
+      "_Container-588b9fa7.js",
+      "_test-2110aa97.js",
+      "_modal-a5743ae9.js",
+      "_TextField-09a07e57.js",
+      "_InputAdornment-1c3242d7.js",
+      "_Button-dbb12d56.js",
+      "_Skeleton-0472c68a.js",
+      "_extendSxProp-02d77161.js"
+    ],
+    "isDynamicEntry": true,
+    "src": "resources/js/pages/StudyPage.tsx"
+  },
+  "resources/js/pages/SubmitPage.tsx": {
+    "file": "assets/SubmitPage-69442e39.js",
+    "imports": [
+      "resources/js/main.tsx",
+      "_Container-588b9fa7.js",
+      "_test-2110aa97.js",
+      "_Button-dbb12d56.js"
+    ],
+    "isDynamicEntry": true,
+    "src": "resources/js/pages/SubmitPage.tsx"
+  },
+  "resources/js/pages/TestPage.css": {
+    "file": "assets/TestPage-66f765c1.css",
+    "src": "resources/js/pages/TestPage.css"
+  },
+  "resources/js/pages/TestPage.tsx": {
+    "css": [
+      "assets/TestPage-66f765c1.css"
+    ],
+    "file": "assets/TestPage-7f86f81b.js",
+    "imports": [
+      "resources/js/main.tsx",
+      "_test-2110aa97.js",
+      "_Button-dbb12d56.js",
+      "_extendSxProp-02d77161.js",
+      "_Skeleton-0472c68a.js",
+      "_prism.min-7ec26ca3.js"
+    ],
+    "isDynamicEntry": true,
+    "src": "resources/js/pages/TestPage.tsx"
   }
 }
