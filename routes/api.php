@@ -3,6 +3,7 @@
 use App\Http\Controllers\Api\AuthController;
 use App\Http\Controllers\Api\QuestionController;
 use App\Http\Controllers\Api\TestController;
+use App\Http\Controllers\Api\PostController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -17,6 +18,14 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+
+Route::prefix('v1')->group(function(){
+    Route::prefix('posts')->group(function(){
+        Route::get('/', [PostController::class, 'index']);
+        Route::get('/{id}', [PostController::class, 'getPostDetails']);
+    });
+});
+
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
@@ -29,6 +38,12 @@ Route::controller(AuthController::class)->prefix('auth')->group(function () {
 });
 
 Route::middleware('auth:api')->group(function () {
+    Route::prefix('v1')->group(function(){
+        Route::prefix('posts')->group(function(){
+            Route::get('/', [PostController::class, 'index']);
+            Route::get('/{id}', [PostController::class, 'getPostDetails']);
+        });
+    });
     Route::get('/tests', [TestController::class, 'listTest']);
     Route::get('/tests/{code}', [TestController::class, 'testDetails']);
     Route::get('/tests/{code}/questions', [TestController::class, 'testDetailsWidthQuestion']);
@@ -37,3 +52,4 @@ Route::middleware('auth:api')->group(function () {
 
     Route::post('/submit-test', [TestController::class, 'submitTest']);
 });
+

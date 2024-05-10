@@ -15,92 +15,108 @@ const SubmitPage = lazy(() => import("./pages/SubmitPage"))
 const ClassPage = lazy(() => import("./pages/ClassPage"))
 const AnswerTestPage = lazy(() => import("./pages/AnswerTestPage"))
 
+const PostPage = lazy(() => import("./pages/PostPage"))
+const PostDetailPage = lazy(() => import("./pages/PostDetailPage"))
+
 const Loading = () => (<div className="text-sm p-2 text-center">Đang tải ...</div>)
 
 const router = createBrowserRouter([
-  {
-    loader: async () => {
-      await useUserStore.getState().logged()
-      return null
-    },
-    errorElement: <ErrorPage />,
-    element: <Outlet />,
-    children: [
-      {
-        // router authentication
-        element: <AuthProvider />,
+    {
+        loader: async () => {
+            await useUserStore.getState().logged()
+            return null
+        },
+        errorElement: <ErrorPage />,
+        element: <Outlet />,
         children: [
-          {
-            element: <MainLayout />,
-            children: [
-              {
-                path: '/',
-                element: <Navigate to={'/exam'} />
-              },
-              {
-                path: '/exam',
-                element: <Suspense fallback={<Loading />}>
-                  <StudyPage />
-                </Suspense>
-              },
-              {
-                path: '/exam/:code',
-                element: <Suspense fallback={<Loading />}>
-                  <StudyDetailsPage />
-                </Suspense>
-              },
-              {
-                path: '/submit-test/:code/:id',
-                element: <Suspense fallback={<Loading />}>
-                  <SubmitPage />
-                </Suspense>
-              },
-              {
-                path: '/answer-test/:code/:id',
-                element: <Suspense fallback={<Loading />}>
-                  <AnswerTestPage />
-                </Suspense>
-              },
-              {
-                path: '/class',
-                element: <Suspense fallback={<Loading />}>
-                  <ClassPage/>
-                </Suspense>
-              },
-            ]
-          },
+            {
+                // router authentication
+                element: <AuthProvider />,
+                children: [
+                    {
+                        element: <MainLayout />,
+                        children: [
+                            {
+                                path: '/',
+                                element: <Navigate to={'/posts'} />
+                            },
 
-          {
-            path: '/test/:code',
-            element: <Suspense fallback={<Loading />}>
-              <TestPage />
-            </Suspense>
-          }
-          
-        ],
-      },
+                            {
+                                path: '/exam',
+                                element: <Suspense fallback={<Loading />}>
+                                    <StudyPage />
+                                </Suspense>
+                            },
+                            {
+                                path: '/exam/:code',
+                                element: <Suspense fallback={<Loading />}>
+                                    <StudyDetailsPage />
+                                </Suspense>
+                            },
+                            {
+                                path: '/submit-test/:code/:id',
+                                element: <Suspense fallback={<Loading />}>
+                                    <SubmitPage />
+                                </Suspense>
+                            },
+                            {
+                                path: '/answer-test/:code/:id',
+                                element: <Suspense fallback={<Loading />}>
+                                    <AnswerTestPage />
+                                </Suspense>
+                            },
+                            {
+                                path: '/class',
+                                element: <Suspense fallback={<Loading />}>
+                                    <ClassPage />
+                                </Suspense>
+                            },
+                            {
+                                path: '/posts',
+                                element: <Suspense fallback={<Loading />}>
+                                    <PostPage />
+                                </Suspense>
+                            },
+                            {
+                                path: '/posts/:id',
+                                element: <Suspense fallback={<Loading />}>
+                                    <PostDetailPage />
+                                </Suspense>
+                            },
+                        ]
+                    },
 
-      // not authentication
-      {
-        path: '/auth',
-        element: <NotAuthLayout />,
-        children: [
-          {
-            path: 'login',
-            element: <Suspense fallback={<Loading />}>
-              <LoginPage />
-            </Suspense>
-          },
-          {
-            path: 'register',
-            element: <Suspense fallback={<Loading />}>
-              <RegisterPage />
-            </Suspense>
-          }
+                    {
+                        path: '/test/:code',
+                        element: <Suspense fallback={<Loading />}>
+                            <TestPage />
+                        </Suspense>
+                    }
+
+                ],
+            },
+
+            // not authentication
+            {
+                path: '/auth',
+                element: <NotAuthLayout />,
+                children: [
+                    {
+                        path: 'login',
+                        element: <Suspense fallback={<Loading />}>
+                            <LoginPage />
+                        </Suspense>
+                    },
+                    {
+                        path: 'register',
+                        element: <Suspense fallback={<Loading />}>
+                            <RegisterPage />
+                        </Suspense>
+                    }
+                ]
+            },
         ]
-      },
-    ]
-  },
+    },
 ]);
 
 export default router

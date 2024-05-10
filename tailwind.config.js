@@ -6,15 +6,18 @@ module.exports = {
         './vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php',
         './storage/framework/views/*.php',
         './resources/views/**/*.blade.php',
-        './resources/js/**/*.{js,ts,jsx,tsx}'
+        './resources/js/**/*.{js,ts,jsx,tsx}',
+
     ],
 
     theme: {
+
         extend: {
             fontFamily: {
                 sans: ['Figtree', ...defaultTheme.fontFamily.sans],
             },
         },
+
     },
 
     corePlugins: {
